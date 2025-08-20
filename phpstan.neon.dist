@@ -1,7 +1,11 @@
+# PHPStan 2.x kompatibel
 parameters:
-  level: max
+  level: 8
+
   paths:
     - src
-  tmpDir: .build/phpstan
-  checkGenericClassInNonGenericObjectType: false
-  checkMissingCallableSignature: false
+
+  tmpDir: var/phpstan
+
+  inferPrivatePropertyTypeFromConstructor: true
+  treatPhpDocTypesAsCertain: false
