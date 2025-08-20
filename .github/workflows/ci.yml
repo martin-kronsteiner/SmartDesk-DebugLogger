@@ -33,11 +33,5 @@ jobs:
       - name: Composer validate
         run: composer validate --no-check-publish --strict
 
-      - name: PHPStan
-        run: vendor/bin/phpstan analyse --no-progress
-
-      - name: PHPCS
-        run: vendor/bin/phpcs
-
-      - name: PHPUnit
-        run: vendor/bin/phpunit --colors=always
+      - name: QA (phpstan + phpcs + phpunit)
+        run: composer qa

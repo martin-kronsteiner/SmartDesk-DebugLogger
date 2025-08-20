@@ -9,3 +9,5 @@
 /.gitattributes     export-ignore
 /LICENSE            export-ignore
 /filesystem.txt     export-ignore
+/qa.sh              export-ignore
+/pre-commit         export-ignore

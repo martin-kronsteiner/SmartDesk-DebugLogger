@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-composer validate --no-check-publish --strict || exit 1
-vendor/bin/phpstan analyse --no-progress || exit 1
-vendor/bin/phpcs || exit 1
-vendor/bin/phpunit --colors=always || exit 1
+set -euo pipefail
+composer validate --no-check-publish --strict
+composer qa

@@ -34,4 +34,5 @@ SmartDesk-DebugLogger/
 ├── phpcs.xml.dist
 ├── phpstan.neon.dist
 ├── phpunit.xml
+├── qa.sh
 └── README.md

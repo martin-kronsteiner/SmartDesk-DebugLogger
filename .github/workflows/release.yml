@@ -3,10 +3,10 @@ name: Release
 on:
   push:
     tags:
-      - 'v*'           # z.B. v1.2.3
+      - 'v*'           # e.g. v1.2.3
 
 permissions:
-  contents: write       # notwendig zum Erstellen des Releases
+  contents: write
 
 jobs:
   test:
@@ -28,13 +28,15 @@ jobs:
           tools: composer:v2
 
       - name: Validate composer.json
-        run: composer validate --no-check-publish
+        run: composer validate --no-check-publish --strict
 
-      - name: Install deps
-        run: composer install --no-interaction --prefer-dist --no-progress
+      - name: Install deps (cached)
+        uses: ramsey/composer-install@v3
+        with:
+          composer-options: --no-interaction --prefer-dist --no-progress
 
       - name: Run tests
-        run: vendor/bin/phpunit --colors=always
+        run: composer test
 
   build:
     name: Build dist
@@ -46,16 +48,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Make dist zip (export-ignore respektiert .gitattributes)
+      - name: Make dist zip (respect .gitattributes export-ignore)
         run: |
-          TAG="${GITHUB_REF_NAME}"                            # z.B. v1.2.3
+          TAG="${GITHUB_REF_NAME}"                            # e.g. v1.2.3
           OUT="smartdesk-debuglogger-${TAG}.zip"
           git archive --format=zip \
             --prefix="SmartDesk-DebugLogger/" "${TAG}" \
             -o "${OUT}"
           echo "ASSET=${OUT}" >> $GITHUB_ENV
 
-      - name: Upload artifact (zwischen Job-Schritten)
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: dist
