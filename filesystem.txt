@@ -1,7 +1,8 @@
 SmartDesk-DebugLogger/
 ├── .github/
 │    └── workflows/
-│    │    └── ci.yml
+│         ├── release.yml
+|         └──ci.yml
 │
 ├── src/
 │    ├── Handlers/
@@ -22,9 +23,9 @@ SmartDesk-DebugLogger/
 │    └──MinLevelTest.php
 ││
 ├── vendor/
+├── .gitattributes
 ├── .phpunit.result.cache
 ├── composer.json
-├── composer.lock
 ├── filesystem.txt
 ├── LICENSE
 ├── phpunit.xml

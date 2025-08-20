@@ -9,7 +9,7 @@ Output goes to a sink: error_log() by default, optionally a rotating file via se
 
 
 [DE] Menschenlesbarer Debug‑Logger für WordPress‑Entwicklung (PHP 8.1+).
-Erzeugt strukturierte Mehrzeilen‑Einträge mit SmartDesk‑Caller‑Info, optionalem Hook‑Status‑Block (♻️/⏳) und Level‑Präfix (Emoji + Label).
+Erzeugt strukturierte, mehrzeilige Einträge mit SmartDesk‑Caller‑Info, optionalem Hook‑Status‑Block (♻️/⏳) und Level‑Präfix (Emoji + Label).
 Ausgabe geht an eine Senke (sink): standardmäßig error_log(), optional rotierende Datei via setWriter().
 
 ## Installation

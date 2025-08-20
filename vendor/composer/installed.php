@@ -3,7 +3,7 @@
         'name' => 'smartdesk/debug-logger',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'c863365a6d5f2b267f9c118ad8976b6bd7b49485',
+        'reference' => '1c877c1315c34922d61b860f91ff2dc45db47aee',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -238,7 +238,7 @@
         'smartdesk/debug-logger' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'c863365a6d5f2b267f9c118ad8976b6bd7b49485',
+            'reference' => '1c877c1315c34922d61b860f91ff2dc45db47aee',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
