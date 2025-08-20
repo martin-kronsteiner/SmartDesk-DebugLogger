@@ -1,6 +1,8 @@
 
 # SmartDesk DebugLogger
 ![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
+![CI](https://github.com/martin-kronsteiner/SmartDesk-DebugLogger/actions/workflows/ci.yml/badge.svg)
+
 [EN] Human-readable debug logger for WordPress development (PHP 8.1+).
 Generates structured multi-line entries with SmartDesk caller info, an optional hook status block (♻️/⏳), and a level prefix (emoji + label).
 Output goes to a sink: error_log() by default, optionally a rotating file via setWriter().
@@ -80,6 +82,8 @@ use SmartDesk\Utils\DebugLogger;
 use SmartDesk\Utils\Support\LogLevel;
 
 DebugLogger::timerStart('import');
+// ... prepare whatever
+DebugLogger::timerLap('import', 'after preparing whatever');
 // ... work ...
 DebugLogger::timerStop('import', 'Import job', LogLevel::NOTICE);
 

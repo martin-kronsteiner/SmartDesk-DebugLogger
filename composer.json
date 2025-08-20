@@ -4,8 +4,9 @@
 	"type": "library",
 	"license": "GPL-3.0-or-later",
 	"authors": [
-		{ "name": "SmartDesk Development Team" }
+		{ "name": "SmartDesk Development Team - Ing. M. Kronsteiner", "email": "debuglogger+login.kronsteiner@gmail.com" }
 	],
+	"keywords": ["wordpress", "logger", "debug", "hooks", "timers"],
 	"require": {
 		"php": ">=8.1"
 	},
@@ -23,6 +24,12 @@
 		"phpunit/phpunit": "^10.5"
 	},
 	"scripts": {
-		"test": "phpunit"
-	}
+		"test": "vendor/bin/phpunit --colors=always"
+	},
+	"minimum-stability": "stable",
+	"prefer-stable": true,
+	"support": {
+	"issues": "https://github.com/martin-kronsteiner/SmartDesk-DebugLogger/issues",
+	"source": "https://github.com/martin-kronsteiner/SmartDesk-DebugLogger"
+	}	
 }

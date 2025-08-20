@@ -1,4 +1,7 @@
 SmartDesk-DebugLogger/
+├── .github/
+│    └── workflows/
+│    │    └── ci.yml
 │
 ├── src/
 │    ├── Handlers/
@@ -15,7 +18,8 @@ SmartDesk-DebugLogger/
 ├── tests/
 │    ├── bootstrap.php
 │    ├── DebugLoggerTest.php
-│    └── HandlersAndUtilitiesTest.php
+│    ├── HandlersAndUtilitiesTest.php
+│    └──MinLevelTest.php
 ││
 ├── vendor/
 ├── .phpunit.result.cache

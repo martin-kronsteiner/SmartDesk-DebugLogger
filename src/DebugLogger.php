@@ -53,6 +53,11 @@ final class DebugLogger
 	/** @var array<string,float> active timers with start timestamp */
 	private static array $timers = [];
 
+	/** @var null|string minimal required level; null = no filter */
+	private static ?string $minLevel = null;
+
+	/** @var array<string,mixed> */
+	private static array $globalContext = [];
 
 	/** Default hook preset key. */
 	private const DEFAULT_PRESET = 'register';
@@ -141,9 +146,8 @@ final class DebugLogger
 
 	/**
 	 * Construct (SmartDesk loader metadata only).
-	 * @param array<string,mixed> $common
 	 */
-	public function __construct(array $common = [])	{
+	public function __construct()	{
 		$this->class_data['class'] = 'DebugLogger';
 		$this->class_data['namespace'] = __NAMESPACE__;
 		$this->class_data['thisVersion'] = '1.1.0';
@@ -155,7 +159,9 @@ final class DebugLogger
 		$this->class_data['priority'] = 10;
 	}
 
-	/** @return array<string,mixed> */
+	/**
+	 * Getter for SmartDesk loader metadata only.
+	 */
 	public function get_class_data(): array {
         // for SmartDesk loader usage
 		return $this->class_data;
@@ -238,27 +244,7 @@ final class DebugLogger
 		$message = implode(PHP_EOL, $lines);
 		return self::emit($ns, $func, $location, $message, $level);
 	}
-
-	/* ============================== Writer & helpers =============================== */
-
-	/**
-	 * Set a custom writer function as the output sink for all log entries.
-	 *
-	 * Replaces the default error_log() output with a custom callable that receives
-	 * the formatted log message. This allows redirecting debug output to files,
-	 * databases, or any other destination. Only one writer can be active at a time.
-	 *
-	 * @param	callable(string):void	$writer	A callable that accepts a single string parameter
-	 * 											containing the complete formatted log message and
-	 * 											handles writing it to the desired destination.
-	 * 											The callable should not return any value.
-	 * 
-	 * @return	void
-	 */
-	public static function setWriter(callable $writer): void {
-		self::$sink = $writer;
-	}
-
+	
 	/**
 	 * Create a rotating file writer for log output.
 	 *
@@ -302,6 +288,85 @@ final class DebugLogger
 		};
 	}
 
+	#region Setters
+
+	/**
+	 * Set a custom writer function as the output sink for all log entries.
+	 *
+	 * Replaces the default error_log() output with a custom callable that receives
+	 * the formatted log message. This allows redirecting debug output to files,
+	 * databases, or any other destination. Only one writer can be active at a time.
+	 *
+	 * @param	callable(string):void	$writer	A callable that accepts a single string parameter
+	 * 											containing the complete formatted log message and
+	 * 											handles writing it to the desired destination.
+	 * 											The callable should not return any value.
+	 * 
+	 * @return	void
+	 */
+	public static function setWriter(callable $writer): void {
+		self::$sink = $writer;
+	}
+
+	/**
+	 * Set the minimum log level threshold for filtering log entries.
+	 *
+	 * Configures a minimum log level that acts as a filter for all subsequent log entries.
+	 * Only log messages at or above the specified level will be processed and written to
+	 * the output sink. Log levels follow a hierarchy where higher severity levels have
+	 * higher numeric values. When a minimum level is set, messages below that threshold
+	 * are silently discarded. This allows for runtime control of log verbosity without
+	 * modifying individual log calls throughout the codebase.
+	 *
+	 * @param	string	$level	The minimum log level to accept. Must be a valid LogLevel constant
+	 * 							such as LogLevel::DEBUG, LogLevel::INFO, LogLevel::WARNING, etc.
+	 * 							The level hierarchy from lowest to highest is: DEBUG, INFO, NOTICE,
+	 * 							WARNING, ERROR, CRITICAL, ALERT, EMERGENCY. Setting a higher level
+	 * 							will filter out lower-priority messages.
+	 * 
+	 * @return	void			No return value. The minimum level threshold is stored internally
+	 * 							and applied to all subsequent log operations until changed or reset.
+	 */
+	public static function setMinLevel(?string $level): void {
+		self::$minLevel = $level;
+	}
+
+	#endregion
+
+
+	#region Private Methods and Helpers
+
+	/**
+	 * Check if a log level meets the minimum threshold requirement for output.
+	 *
+	 * Determines whether a given log level should be allowed to output based on the
+	 * configured minimum level threshold. Uses the LogLevel::ORDER array to compare
+	 * numeric priority values where higher numbers indicate higher severity levels.
+	 * If no minimum level is set (null), all levels are allowed through. This enables
+	 * runtime filtering of log messages without modifying individual log calls.
+	 *
+	 * @param	string	$level	The log level to check against the minimum threshold.
+	 * 							Must be a valid LogLevel constant such as LogLevel::DEBUG,
+	 * 							LogLevel::INFO, LogLevel::WARNING, etc. The level must
+	 * 							exist in the LogLevel::ORDER array for proper comparison.
+	 * 
+	 * @return	bool			True if the level meets or exceeds the minimum threshold
+	 * 							and should be allowed to output, false if it should be
+	 * 							filtered out. Always returns true when no minimum level
+	 * 							is configured (self::$minLevel is null).
+	 */
+	private static function isAllowed(string $level): bool {
+		if (self::$minLevel === null) return true;
+		
+		$level = $level ?? \SmartDesk\Utils\Support\LogLevel::INFO;
+		$order = \SmartDesk\Utils\Support\LogLevel::ORDER;
+		
+		if (!isset($order[$level])) return true;
+		if (!isset($order[self::$minLevel])) return true;
+
+		return $order[$level] >= $order[self::$minLevel];
+	}
+
 	/**
 	 * Low-level writer that outputs log text to the configured sink.
 	 *
@@ -326,6 +391,13 @@ final class DebugLogger
 	}
 
 	/**
+	 * Set global context values (added to every log entry).
+	 */
+	public static function setContext(array $context): void {
+		self::$globalContext = $context;
+	}
+
+	/**
 	 * Compose final multi-line entry and write to sink.
 	 *
 	 * Creates a complete formatted log entry by combining caller information, timestamp,
@@ -333,6 +405,7 @@ final class DebugLogger
 	 * a header with namespace/function context, UTC timestamp with microseconds, optional
 	 * SmartDesk request identifier, file location, the main message body, and a distinctive
 	 * footer separator. The formatted entry is then written to the configured output sink.
+	 * If the log level doesn't meet the minimum threshold, the entry is discarded and false is returned.
 	 *
 	 * @param	string		$namespace	The namespace portion of the calling class (e.g., 'SmartDesk\Utils')
 	 * @param	string		$function	The function name with class context (e.g., 'MyClass::myMethod()')
@@ -341,9 +414,12 @@ final class DebugLogger
 	 * @param	null|string	$level		Optional log level with emoji prefix from LogLevel constants. Defaults to LogLevel::INFO.
 	 * 									If null or empty, no level prefix is added to the output.
 	 * 
-	 * @return	bool					Always returns true to indicate the log entry was processed and written
+	 * @return	bool					True if the log entry was processed and written to the sink, false if the log level
+	 * 									was filtered out by the minimum level threshold
 	 */
 	private static function emit(string $namespace, string $function, string $location, string $body, ?string $level = LogLevel::INFO): bool {
+		if (!self::isAllowed($level)) return false;
+		
 		$date = new \DateTime('now', new \DateTimeZone('UTC'));
 		$time = $date->format('H:i:s') . ',' . substr($date->format('u'), 0, 5);
 
@@ -663,7 +739,9 @@ final class DebugLogger
 		return array_keys($arr) === range(0, count($arr) - 1);
 	}
 
-	/* ============================== Timer ========================================= */
+	#endregion
+
+	#region Timer
 
 	/**
 	 * Start a named timer for performance measurement and debugging.
@@ -686,6 +764,43 @@ final class DebugLogger
 		if (!self::isDebugEnabled()) return;
 		self::$timers[$id] = microtime(true);
 	}
+
+	/**
+	 * Record a lap time for a named timer and log the elapsed duration since start or last lap.
+	 *
+	 * Records an intermediate timing measurement for a previously started timer without stopping it.
+	 * If the timer doesn't exist, it will be automatically created with the current timestamp as
+	 * the start time. The elapsed time since the timer was started (or last reset) is calculated
+	 * and logged with microsecond precision. The timer continues running after the lap is recorded.
+	 * Only active when WP_DEBUG is enabled, otherwise the call is silently ignored.
+	 *
+	 * @param	string			$id		The unique identifier of the timer to record a lap for.
+	 * 									If no timer with this ID exists, a new timer will be
+	 * 									automatically created starting from the current timestamp.
+	 * @param	string			$title	Optional title for the log entry. Defaults to 'lap'.
+	 * 									Used as the main heading in the log output to identify
+	 * 									this particular lap measurement.
+	 * @param	null|string		$level	Optional log level using LogLevel constants (DEBUG, INFO, WARNING, etc.).
+	 * 									Defaults to LogLevel::DEBUG. Determines the priority level
+	 * 									of the lap time log entry for filtering purposes.
+	 * 
+	 * @return	void					No return value. The lap duration is logged to the configured
+	 * 									output sink and the timer continues running for future laps or stop.
+	 */
+	public static function timerLap(string $id, string $title = 'lap', ?string $level = LogLevel::DEBUG): void {
+		if (!isset(self::$timers[$id])) {
+			self::$timers[$id] = microtime(true);
+		}
+
+		$elapsed = microtime(true) - self::$timers[$id];
+		self::emit(
+			$level ?? LogLevel::DEBUG,
+			$elapsed,
+			["Timer lap '{$id}' finished in " . \number_format($elapsed, 4) . "s"],
+			$title
+		);
+	}
+
 
 	/**
 	 * Stop a named timer and log the measured execution duration.
@@ -729,7 +844,9 @@ final class DebugLogger
 		);
 	}
 
-	/* ============================== Level shortcuts =============================== */
+	#endregion
+
+	#region Level shortcuts
 
 	/**
 	 * Log debug data with DEBUG level priority.
@@ -882,5 +999,7 @@ final class DebugLogger
 	public static function critical(mixed $data, null|string|array $hooks = null, ?string $title = null): bool {
 		return self::log($data, $hooks, $title, LogLevel::CRITICAL);
 	}
+
+	#endregion
 
 }
