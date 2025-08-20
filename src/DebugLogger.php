@@ -23,6 +23,7 @@
  * @copyright	2025 SmartDesk Development Team - Ing. M. Kronsteiner
  * @link		https://www.gnu.org/licenses/gpl-3.0.html
  */
+declare(strict_types=1);
 
 namespace SmartDesk\Utils;
 

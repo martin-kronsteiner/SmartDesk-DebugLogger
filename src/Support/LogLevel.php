@@ -25,7 +25,7 @@
  */
 declare(strict_types=1);
 
-namespace SmartDesk\Debug\Support;
+namespace SmartDesk\Utils\Support;
 
 /**
  * Defines log levels with emoji indicators and hierarchical ordering.
