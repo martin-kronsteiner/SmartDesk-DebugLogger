@@ -1,4 +1,5 @@
 <?php
+
 // SPDX-License-Identifier: GPL-3.0-or-later
 /**
  * SmartDesk DebugLogger
@@ -29,31 +30,32 @@ namespace SmartDesk\Utils\Handlers;
 
 /**
  * Handles logging messages to PHP's built-in error log.
- * 
+ *
  * This class provides a simple handler for logging messages using PHP's error_log() function.
  * It implements a factory pattern that returns a callable handler function which can be used
  * by logging systems to write log entries to the system error log.
  */
-final class ErrorLogHandler {
-	
+final class ErrorLogHandler
+{
 	/**
 	 * Returns a callable handler function that logs messages to PHP's error log.
-	 * 
+	 *
 	 * This method creates and returns a closure that can be used as a logging handler.
 	 * The returned function accepts logging parameters and writes the formatted log
 	 * line to PHP's error log using the built-in error_log() function.
-	 * 
-	 * @return callable(string,string,array):void	A callable that accepts three parameters:
-	 * 													- string $level:	The log level (e.g., 'error', 'warning', 'info')
-	 * 													- string $line:		The formatted log message to be written
-	 * 													- array $payload:	Additional context data (unused in this implementation)
-	 * 												Returns void after logging the message
+	 *
+	 * A callable that accepts three parameters:
+	 * 		- string $level:	The log level (e.g., 'error', 'warning', 'info')
+	 * 		- string $line:		The formatted log message to be written
+	 * 		- array $payload:	Additional context data (unused in this implementation)
+	 * Returns void after logging the message
+	 * @return callable(string,string,array<string,mixed>):void
 	 */
-	/** @return array<string,mixed> */
-	public function handler(): callable	{
+	public function handler(): callable
+    {
 		return static function (string $level, string $line, array $payload): void {
+
 			error_log($line);
-		};
+        };
 	}
-	
 }

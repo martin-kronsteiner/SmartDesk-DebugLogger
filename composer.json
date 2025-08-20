@@ -4,7 +4,9 @@
 	"type": "library",
 	"license": "GPL-3.0-or-later",
 	"authors": [
-		{ "name": "SmartDesk Development Team - Ing. M. Kronsteiner", "email": "debuglogger+login.kronsteiner@gmail.com" }
+		{ 
+			"name": "SmartDesk Development Team - Ing. M. Kronsteiner", 
+			"email": "debuglogger+login.kronsteiner@gmail.com" }
 	],
 	"keywords": ["wordpress", "logger", "debug", "hooks", "timers"],
 	"require": {
@@ -29,6 +31,8 @@
 		"test": "php vendor/bin/phpunit --colors=always",
 		"phpstan": "php vendor/bin/phpstan analyse --no-progress",
 		"phpcs": "php vendor/bin/phpcs",
+		"cbf": "php vendor/bin/phpcbf",
+		"coverage": "php -d xdebug.mode=coverage vendor/bin/phpunit --coverage-html var/coverage",
 		"qa": [
 			"@phpstan",
 			"@phpcs",

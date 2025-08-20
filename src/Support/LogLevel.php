@@ -1,4 +1,5 @@
 <?php
+
 // SPDX-License-Identifier: GPL-3.0-or-later
 /**
  * SmartDesk DebugLogger
@@ -29,28 +30,26 @@ namespace SmartDesk\Utils\Support;
 
 /**
  * Defines log levels with emoji indicators and hierarchical ordering.
- * 
+ *
  * This class provides a standardized set of log levels for debugging and monitoring
  * purposes. Each level includes an emoji indicator for visual identification and
  * maintains a numerical order from lowest (DEBUG) to highest (CRITICAL) severity.
- * 
+ *
  * The ordering system allows for level comparison and filtering, where higher
  * numbers indicate more severe log conditions that typically require immediate
  * attention.
  */
-final class LogLevel {
-
+final class LogLevel
+{
 	public const DEBUG		= '🐞 DEBUG';
-	public const INFO		= 'ℹ️ INFO';
-	public const NOTICE		= '📋 NOTICE';
-	public const WARNING	= '⚠️ WARNING';
-	public const ALERT		= '🚨 ALERT';
-	public const EMERGENCY	= '⛔ EMERGENCY';
-	public const ERROR		= '❌ ERROR';
-	public const CRITICAL	= '☠️ CRITICAL';
-	
-
-	/** @var array<string,int> */
+    public const INFO		= 'ℹ️ INFO';
+    public const NOTICE		= '📋 NOTICE';
+    public const WARNING	= '⚠️ WARNING';
+    public const ALERT		= '🚨 ALERT';
+    public const EMERGENCY	= '⛔ EMERGENCY';
+    public const ERROR		= '❌ ERROR';
+    public const CRITICAL	= '☠️ CRITICAL';
+/** @var array<string,int> */
 	public const ORDER = [
 
 		self::DEBUG		=> 0,
@@ -63,5 +62,4 @@ final class LogLevel {
 		self::CRITICAL	=> 7,
 
 	];
-	
 }

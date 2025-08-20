@@ -1,4 +1,5 @@
 <?php
+
 // SPDX-License-Identifier: GPL-3.0-or-later
 /**
  * SmartDesk DebugLogger
@@ -29,39 +30,51 @@ namespace SmartDesk\Utils\Handlers;
 
 /**
  * Minimal file writer with size-based rotation.
- * 
+ *
  * This class provides a file-based logging handler that automatically manages
  * log file rotation based on file size limits. It creates a callable handler
  * that can be used to write log entries to files while maintaining a specified
  * number of rotated backup files. The handler ensures directory creation,
  * manages file size limits, and performs automatic cleanup of old log files.
- * 
+ *
  * The rotation mechanism works by renaming existing files with numeric suffixes
  * (e.g., debug.log becomes debug.log.1, debug.log.1 becomes debug.log.2, etc.)
  * when the current log file exceeds the maximum size threshold. Files beyond
  * the configured maximum number of rotated files are automatically removed.
  */
-final class FileHandler {
-
-	private string	$dir;
-	private string	$filename;
-	private int		$maxBytes;
-	private int		$maxFiles;
+final class FileHandler
+{
+	private string $dir;
+    private string $filename;
+    private int $maxBytes;
+    private int $maxFiles;
 
 	/**
 	 * Initializes a new FileHandler instance with directory and rotation settings.
 	 *
-	 * @param	string		$dir		The directory path where log files will be stored. Trailing directory separators will be removed.
-	 * @param	string		$filename	The name of the log file. Defaults to 'debug.log'.
-	 * @param	int			$maxBytes	The maximum file size in bytes before rotation occurs. Defaults to 2,000,000 bytes (2MB).
-	 * @param	int			$maxFiles	The maximum number of rotated files to keep. Defaults to 4 files.
+	 * The directory path where log files will be stored. Trailing directory separators will be removed.
+	 * @param	string		$dir
+	 *
+	 * The name of the log file. Defaults to 'debug.log'.
+	 * @param	string		$filename
+	 *
+	 * The maximum file size in bytes before rotation occurs. Defaults to 2,000,000 bytes (2MB).
+	 * @param	int			$maxBytes
+	 *
+	 * The maximum number of rotated files to keep. Defaults to 4 files.
+	 * @param	int			$maxFiles
 	 */
-	public function __construct(string $dir, string $filename = 'debug.log', int $maxBytes = 2_000_000, int $maxFiles = 4) {
+	public function __construct(
+		string $dir,
+		string $filename = 'debug.log',
+		int $maxBytes = 2_000_000,
+		int $maxFiles = 4
+    ) {
 		$this->dir		= rtrim($dir, DIRECTORY_SEPARATOR);
-		$this->filename	= $filename;
-		$this->maxBytes	= $maxBytes;
-		$this->maxFiles	= $maxFiles;
-	}
+        $this->filename	= $filename;
+        $this->maxBytes	= $maxBytes;
+        $this->maxFiles	= $maxFiles;
+    }
 
 	/**
 	 * Returns a callable handler function for writing log entries to a file with automatic rotation.
@@ -71,25 +84,27 @@ final class FileHandler {
 	 * ensures the target directory exists, rotates files when size limits are exceeded,
 	 * and safely handles file operations.
 	 *
-	 * @return callable(string,string,array):void	A callable that accepts three parameters:
-	 * 													- string	$level:		The log level (e.g., 'info', 'error', 'debug')
-	 * 													- string	$line:		The formatted log message ready for writing
-	 * 													- array		$payload:	Additional context data (not used in file writing)
+	 * A callable that accepts three parameters:
+	 * 		- string	$level:		The log level (e.g., 'info', 'error', 'debug')
+	 * 		- string	$line:		The formatted log message ready for writing
+	 * 		- array		$payload:	Additional context data (not used in file writing)
+	 * @return callable(string,string,array<string,mixed>):void
 	 */
-	/** @return array<string,mixed> */
-	public function handler(): callable	{
+	public function handler(): callable
+    {
 		$self = $this;
-		return static function (string $level, string $line, array $payload) use ($self): void {
+        return static function (string $level, string $line, array $payload) use ($self): void {
+
 			$self->ensureDir();
-			$path = $self->path();
-			$self->rotateIfNeeded($path);
-			$fp = @fopen($path, 'ab');
-			if ($fp) {
-				fwrite($fp, $line . PHP_EOL);
-				fclose($fp);
-			}
-		};
-	}
+            $path = $self->path();
+            $self->rotateIfNeeded($path);
+            $fp = @fopen($path, 'ab');
+            if ($fp) {
+                fwrite($fp, $line . PHP_EOL);
+                fclose($fp);
+            }
+        };
+    }
 
 	/**
 	 * Ensures that the target directory exists, creating it if necessary.
@@ -102,11 +117,12 @@ final class FileHandler {
 	 *
 	 * @return void
 	 */
-	private function ensureDir(): void {
+	private function ensureDir(): void
+    {
 		if (!is_dir($this->dir)) {
-			@mkdir($this->dir, 0775, true);
-		}
-	}
+            @mkdir($this->dir, 0775, true);
+        }
+    }
 
 	/**
 	 * Constructs and returns the full file path for the log file.
@@ -117,9 +133,10 @@ final class FileHandler {
 	 *
 	 * @return string The complete file path to the log file, including directory and filename.
 	 */
-	private function path(): string {
+	private function path(): string
+    {
 		return $this->dir . DIRECTORY_SEPARATOR . $this->filename;
-	}
+    }
 
 	/**
 	 * Rotates log files when the current file exceeds the maximum size limit.
@@ -135,18 +152,33 @@ final class FileHandler {
 	 *
 	 * @return	void
 	 */
-	private function rotateIfNeeded(string $path): void	{
+	private function rotateIfNeeded(string $path): void
+    {
 		clearstatcache(true, $path);
-		$size = is_file($path) ? filesize($path) : 0;
+        $size = is_file($path) ? filesize($path) : 0;
 		if ($size !== false && $size > $this->maxBytes) {
-			for ($i = $this->maxFiles; $i >= 1; $i--) {
-				$src = $path . ($i === 1 ? '' : '.' . ($i - 1));
-				$dst = $path . '.' . $i;
-				if (is_file($src)) {
-					@rename($src, $dst);
-				}
-			}
-		}
-	}
+            for ($i = $this->maxFiles; $i >= 1; $i--) {
+                $src = $path . ($i === 1 ? '' : '.' . ($i - 1));
+                $dst = $path . '.' . $i;
+                if (is_file($src)) {
+                    @rename($src, $dst);
+                }
+            }
+        }
+    }
 
+	/**
+	 * Create a file handler configuration.
+	 *
+	 * @param	string	$filepath	The file path to write log messages to
+	 *
+	 * @return	callable(string): void	The configured file handler
+	 */
+	public static function create(string $filepath): callable
+    {
+		return function (string $message) use ($filepath): void {
+
+			file_put_contents($filepath, $message, FILE_APPEND | LOCK_EX);
+        };
+	}
 }

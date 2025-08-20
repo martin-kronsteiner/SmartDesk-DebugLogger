@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit bootstrap="tests/bootstrap.php" colors="true">
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/10.5/phpunit.xsd"
+		 bootstrap="tests/bootstrap.php"
+		 cacheDirectory="var/phpunit"
+		 executionOrder="depends,defects"
+		 requireCoverageMetadata="false"
+		 beStrictAboutCoverageMetadata="false"
+		 beStrictAboutOutputDuringTests="true"
+		 failOnRisky="true"
+		 failOnWarning="true">
 	<testsuites>
-		<testsuite name="SmartDesk DebugLogger">
+		<testsuite name="default">
 			<directory>tests</directory>
 		</testsuite>
 	</testsuites>
+
+	<source>
+		<include>
+			<directory suffix=".php">src</directory>
+		</include>
+	</source>
 </phpunit>

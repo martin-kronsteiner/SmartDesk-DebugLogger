@@ -1,4 +1,5 @@
 <?php
+
 // SPDX-License-Identifier: GPL-3.0-or-later
 /**
  * SmartDesk DebugLogger
@@ -34,19 +35,19 @@ final class Utilities
 {
 	/**
 	 * Gets the current UTC time formatted as HH:MM:SS,microseconds.
-	 * 
+	 *
 	 * This method creates a DateTime object in UTC timezone and formats it
 	 * to include hours, minutes, seconds, and the first 5 digits of microseconds
 	 * separated by a comma. This format is commonly used for precise logging
 	 * and debugging purposes.
-	 * 
+	 *
 	 * @return string The current UTC time in format "HH:MM:SS,MMMMM" where
 	 *                HH is hours (00-23), MM is minutes (00-59), SS is seconds (00-59),
 	 *                and MMMMM is the first 5 digits of microseconds (00000-99999)
 	 */
-	public static function utcTime(): string {
+	public static function utcTime(): string
+    {
 		$dt = new \DateTime('now', new \DateTimeZone('UTC'));
-		return $dt->format('H:i:s') . ',' . substr($dt->format('u'), 0, 5);
+        return $dt->format('H:i:s') . ',' . substr($dt->format('u'), 0, 5);
 	}
-
 }

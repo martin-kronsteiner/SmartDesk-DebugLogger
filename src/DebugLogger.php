@@ -1,4 +1,5 @@
 <?php
+
 // SPDX-License-Identifier: GPL-3.0-or-later
 /**
  * SmartDesk DebugLogger
@@ -39,8 +40,8 @@ use SmartDesk\Utils\Support\LogLevel;
  *
  * Tabs are intentionally used for indentation (project style).
  */
-final class DebugLogger {
-
+final class DebugLogger
+{
 	/** @var null|callable(string):void Custom writer sink */
 	private static $sink = null;
 
@@ -136,9 +137,10 @@ final class DebugLogger {
 	];
 
 	/** Gate: active only when WP_DEBUG === true. */
-	protected static function isDebugEnabled(): bool {
+	protected static function isDebugEnabled(): bool
+    {
 		return defined('WP_DEBUG') && WP_DEBUG === true;
-	}
+    }
 
 	/**
 	 * Pretty log with optional hooks block.
@@ -147,37 +149,50 @@ final class DebugLogger {
 	 * and caller details. The output includes formatted data, hook execution status, and metadata
 	 * about the calling function. Only active when WP_DEBUG is enabled.
 	 *
-	 * @param	mixed				$data	The data to log - can be any type (array, object, scalar, etc.)
-	 * @param	string|array		$hooks	Optional hook preset name(s) or specific hook names to check status for.
-	 * 										Can be a preset key ('load', 'register', 'admin', etc.), comma-separated string,
-	 * 										or array of hook names. Defaults to 'register' preset if null.
-	 * @param	null|string			$title	Optional title line to display at the top of the log entry
-	 * @param	null|string			$level	Log level using LogLevel constants (DEBUG, INFO, WARNING, etc.). Defaults to INFO.
-	 * 
+	 * The data to log - can be any type (array, object, scalar, etc.)
+	 * @param	mixed							$data
+	 *
+	 * Optional hook preset name(s) or specific hook names to check status for.
+	 * Can be a preset key ('load', 'register', 'admin', etc.), comma-separated string,
+	 * or array of hook names. Defaults to 'register' preset if null.
+	 * @param	array<int,string>|string|null	$hooks
+	 *
+	 * Optional title line to display at the top of the log entry
+	 * @param	null|string						$title
+	 *
+	 * Log level using LogLevel constants (DEBUG, INFO, WARNING, etc.). Defaults to INFO.
+	 * @param	null|string						$level
+	 *
 	 * @return	bool				True if the log entry was written successfully, false if WP_DEBUG is disabled
 	 */
-	public static function log(mixed $data, null|string|array $hooks = [], ?string $title = null, ?string $level = LogLevel::INFO): bool {
-		if (!self::isDebugEnabled()) return false;
+	public static function log(
+		mixed $data,
+		null|string|array $hooks = [],
+		?string $title = null,
+		?string $level = LogLevel::INFO
+    ): bool {
+		if (!self::isDebugEnabled()) {
+            return false;
+        }
 
 		[$ns, $func, $location] = self::callerInfo();
-		$hooksList = self::normalizeHooks($hooks);
-		$hooksBlock = self::formatHooksBlock($hooksList);
-		$body = self::formatData($data);
-
-		$lines = [];
-		if ($title !== null && $title !== '') {
-			$lines[] = "\t" . $title;
-		}
+        $hooksList = self::normalizeHooks($hooks);
+        $hooksBlock = self::formatHooksBlock($hooksList);
+        $body = self::formatData($data);
+        $lines = [];
+        if ($title !== null && $title !== '') {
+            $lines[] = "\t" . $title;
+        }
 		if ($hooksBlock !== '') {
-			$lines[] = $hooksBlock;
-		}
+            $lines[] = $hooksBlock;
+        }
 		if ($body !== '') {
-			$lines[] = $body;
-		}
+            $lines[] = $body;
+        }
 
 		$message = implode(PHP_EOL, $lines);
-		return self::emit($ns, $func, $location, $message, $level);
-	}
+        return self::emit($ns, $func, $location, $message, $level);
+    }
 
 	/**
 	 * Log only the hook status block.
@@ -186,33 +201,44 @@ final class DebugLogger {
 	 * without any additional data. Shows which hooks have been fired and how many times,
 	 * versus hooks that are still pending. Only active when WP_DEBUG is enabled.
 	 *
-	 * @param	null|string|array	$hooks	Optional hook preset name(s) or specific hook names to check status for.
-	 * 										Can be a preset key ('load', 'register', 'admin', etc.), comma-separated string,
-	 * 										or array of hook names. Defaults to 'register' preset if null.
-	 * @param	null|string			$title	Optional title line to display at the top of the log entry. Defaults to 'Hooks'.
-	 * @param	null|string			$level	Log level using LogLevel constants (DEBUG, INFO, WARNING, etc.). Defaults to INFO.
-	 * 
-	 * @return	bool				True if the log entry was written successfully, false if WP_DEBUG is disabled
+	 * Optional hook preset name(s) or specific hook names to check status for.
+	 * Can be a preset key ('load', 'register', 'admin', etc.), comma-separated string,
+	 * or array of hook names. Defaults to 'register' preset if null.
+	 * @param	array<int,string>|string|null	$hooks
+	 *
+	 * Optional title line to display at the top of the log entry. Defaults to 'Hooks'.
+	 * @param	null|string						$title
+	 *
+	 * Log level using LogLevel constants (DEBUG, INFO, WARNING, etc.). Defaults to INFO.
+	 * @param	null|string						$level
+	 *
+	 * True if the log entry was written successfully, false if WP_DEBUG is disabled
+	 * @return	bool
 	 */
-	public static function hook(null|string|array $hooks, ?string $title = 'Hooks', ?string $level = LogLevel::INFO): bool {
-		if (!self::isDebugEnabled()) return false;
+	public static function hook(
+		null|string|array $hooks,
+		?string $title = 'Hooks',
+		?string $level = LogLevel::INFO
+    ): bool {
+		if (!self::isDebugEnabled()) {
+            return false;
+        }
 
 		[$ns, $func, $location] = self::callerInfo();
-		$hooksList = self::normalizeHooks($hooks);
-		$hooksBlock = self::formatHooksBlock($hooksList);
-
-		$lines = [];
-		if ($title !== null && $title !== '') {
-			$lines[] = "\t" . $title;
-		}
+        $hooksList = self::normalizeHooks($hooks);
+        $hooksBlock = self::formatHooksBlock($hooksList);
+        $lines = [];
+        if ($title !== null && $title !== '') {
+            $lines[] = "\t" . $title;
+        }
 		if ($hooksBlock !== '') {
-			$lines[] = $hooksBlock;
-		}
+            $lines[] = $hooksBlock;
+        }
 
 		$message = implode(PHP_EOL, $lines);
-		return self::emit($ns, $func, $location, $message, $level);
-	}
-	
+        return self::emit($ns, $func, $location, $message, $level);
+    }
+
 	/**
 	 * Create a rotating file writer for log output.
 	 *
@@ -221,40 +247,55 @@ final class DebugLogger {
 	 * renaming them with numeric suffixes (.1, .2, etc.) and starts a fresh main log file.
 	 * The directory is created automatically if it doesn't exist.
 	 *
-	 * @param	string	$dir		The directory path where log files will be stored. Will be created if it doesn't exist.
-	 * @param	string	$file		The base filename for the log file. Defaults to 'debug.log'.
-	 * @param	int		$maxBytes	Maximum file size in bytes before rotation occurs. Defaults to 2,000,000 bytes (2MB).
-	 * @param	int		$maxFiles	Maximum number of rotated files to keep. Older files beyond this limit are deleted.
-	 * 								Defaults to 4 files.
-	 * 
-	 * @return	callable(string):void	A callable that accepts a log message string and writes it to the rotating log file.
-	 * 									The callable handles all rotation logic internally and returns void.
+	 * The directory path where log files will be stored. Will be created if it doesn't exist.
+	 * @param	string	$dir
+	 *
+	 * The base filename for the log file. Defaults to 'debug.log'.
+	 * @param	string	$file
+	 *
+	 * Maximum file size in bytes before rotation occurs. Defaults to 2,000,000 bytes (2MB).
+	 * @param	int		$maxBytes
+	 *
+	 * Maximum number of rotated files to keep. Older files beyond this limit are deleted.
+	 * Defaults to 4 files.
+	 * @param	int		$maxFiles
+	 *
+	 * A callable that accepts a log message string and writes it to the rotating log file.
+	 * The callable handles all rotation logic internally and returns void.
+	 * @return	callable(string):void
 	 */
-	public static function makeRotatingWriter(string $dir, string $file = 'debug.log', int $maxBytes = 2_000_000, int $maxFiles = 4): callable {
+	public static function makeRotatingWriter(
+		string $dir,
+		string $file = 'debug.log',
+		int $maxBytes = 2_000_000,
+		int $maxFiles = 4
+    ): callable {
+
 		$dir = rtrim($dir, DIRECTORY_SEPARATOR);
-		return static function (string $text) use ($dir, $file, $maxBytes, $maxFiles): void {
+        return static function (string $text) use ($dir, $file, $maxBytes, $maxFiles): void {
+
 			if (!is_dir($dir)) {
-				@mkdir($dir, 0775, true);
-			}
+                @mkdir($dir, 0775, true);
+            }
 			$path = $dir . DIRECTORY_SEPARATOR . $file;
-			clearstatcache(true, $path);
-			$size = is_file($path) ? (int) filesize($path) : 0;
+            clearstatcache(true, $path);
+            $size = is_file($path) ? (int) filesize($path) : 0;
 			if ($size > $maxBytes) {
-				for ($i = $maxFiles; $i >= 1; $i--) {
-					$src = $dir . DIRECTORY_SEPARATOR . $file . ($i === 1 ? '' : '.' . ($i - 1));
-					$dst = $dir . DIRECTORY_SEPARATOR . $file . '.' . $i;
-					if (is_file($src)) {
-						@rename($src, $dst);
-					}
-				}
-			}
+                for ($i = $maxFiles; $i >= 1; $i--) {
+                    $src = $dir . DIRECTORY_SEPARATOR . $file . ($i === 1 ? '' : '.' . ($i - 1));
+                    $dst = $dir . DIRECTORY_SEPARATOR . $file . '.' . $i;
+                    if (is_file($src)) {
+                        @rename($src, $dst);
+                    }
+                }
+            }
 			$fp = @fopen($path, 'ab');
-			if ($fp) {
-				fwrite($fp, $text);
-				fclose($fp);
-			}
-		};
-	}
+            if ($fp) {
+                fwrite($fp, $text);
+                fclose($fp);
+            }
+        };
+    }
 
 	#region Setters
 
@@ -269,12 +310,14 @@ final class DebugLogger {
 	 * 											containing the complete formatted log message and
 	 * 											handles writing it to the desired destination.
 	 * 											The callable should not return any value.
-	 * 
+	 *
 	 * @return	void
 	 */
-	public static function setWriter(callable $writer): void {
+	public static function setWriter(callable $writer): void
+    {
+
 		self::$sink = $writer;
-	}
+    }
 
 	/**
 	 * Set the minimum log level threshold for filtering log entries.
@@ -291,13 +334,15 @@ final class DebugLogger {
 	 * 							The level hierarchy from lowest to highest is: DEBUG, INFO, NOTICE,
 	 * 							WARNING, ERROR, CRITICAL, ALERT, EMERGENCY. Setting a higher level
 	 * 							will filter out lower-priority messages.
-	 * 
+	 *
 	 * @return	void			No return value. The minimum level threshold is stored internally
 	 * 							and applied to all subsequent log operations until changed or reset.
 	 */
-	public static function setMinLevel(?string $level): void {
+	public static function setMinLevel(?string $level): void
+    {
+
 		self::$minLevel = $level;
-	}
+    }
 
 	#endregion
 
@@ -317,23 +362,30 @@ final class DebugLogger {
 	 * 							Must be a valid LogLevel constant such as LogLevel::DEBUG,
 	 * 							LogLevel::INFO, LogLevel::WARNING, etc. The level must
 	 * 							exist in the LogLevel::ORDER array for proper comparison.
-	 * 
+	 *
 	 * @return	bool			True if the level meets or exceeds the minimum threshold
 	 * 							and should be allowed to output, false if it should be
 	 * 							filtered out. Always returns true when no minimum level
 	 * 							is configured (self::$minLevel is null).
 	 */
-	private static function isAllowed(?string $level): bool {
-		if (self::$minLevel === null) return true;
-		
+	private static function isAllowed(?string $level): bool
+    {
+
+		if (self::$minLevel === null) {
+            return true;
+        }
+
 		$level = $level ?? \SmartDesk\Utils\Support\LogLevel::INFO;
-		$order = \SmartDesk\Utils\Support\LogLevel::ORDER;
-		
-		if (!isset($order[$level])) return true;
-		if (!isset($order[self::$minLevel])) return true;
+        $order = \SmartDesk\Utils\Support\LogLevel::ORDER;
+        if (!isset($order[$level])) {
+            return true;
+        }
+		if (!isset($order[self::$minLevel])) {
+            return true;
+        }
 
 		return $order[$level] >= $order[self::$minLevel];
-	}
+    }
 
 	/**
 	 * Low-level writer that outputs log text to the configured sink.
@@ -346,17 +398,19 @@ final class DebugLogger {
 	 * @param	string	$text	The complete formatted log message string to be written.
 	 * 							This should include all formatting, timestamps, headers,
 	 * 							and content as it will be output exactly as provided.
-	 * 
+	 *
 	 * @return	void			No return value. The method either writes to the custom
 	 * 							sink or calls error_log() and returns nothing.
 	 */
-	private static function write(string $text): void {
+	private static function write(string $text): void
+    {
+
 		if (self::$sink) {
-			(self::$sink)($text);
-			return;
-		}
+            (self::$sink)($text);
+            return;
+        }
 		error_log($text);
-	}
+    }
 
 	/**
 	 * Compose final multi-line entry and write to sink.
@@ -368,34 +422,49 @@ final class DebugLogger {
 	 * footer separator. The formatted entry is then written to the configured output sink.
 	 * If the log level doesn't meet the minimum threshold, the entry is discarded and false is returned.
 	 *
-	 * @param	string		$namespace	The namespace portion of the calling class (e.g., 'SmartDesk\Utils')
-	 * @param	string		$function	The function name with class context (e.g., 'MyClass::myMethod()')
-	 * @param	string		$location	File path and line number where the log was called (e.g., '/path/file.php:123')
-	 * @param	string		$body		The main formatted message content to be logged, may contain multiple lines
-	 * @param	null|string	$level		Optional log level with emoji prefix from LogLevel constants. Defaults to LogLevel::INFO.
-	 * 									If null or empty, no level prefix is added to the output.
-	 * 
-	 * @return	bool					True if the log entry was processed and written to the sink, false if the log level
-	 * 									was filtered out by the minimum level threshold
+	 * The namespace portion of the calling class (e.g., 'SmartDesk\Utils')
+	 * @param	string		$namespace
+	 *
+	 * The function name with class context (e.g., 'MyClass::myMethod()')
+	 * @param	string		$function
+	 *
+	 * File path and line number where the log was called (e.g., '/path/file.php:123')
+	 * @param	string		$location
+	 *
+	 * The main formatted message content to be logged, may contain multiple lines
+	 * @param	string		$body
+	 *
+	 * Optional log level with emoji prefix from LogLevel constants. Defaults to LogLevel::INFO.
+	 * If null or empty, no level prefix is added to the output.
+	 * @param	null|string	$level
+	 *
+	 * True if the log entry was processed and written to the sink, false if the log level
+	 * was filtered out by the minimum level threshold
+	 * @return	bool
 	 */
-	private static function emit(string $namespace, string $function, string $location, string $body, ?string $level = LogLevel::INFO): bool {
-		if (!self::isAllowed($level)) return false;
-		
+	private static function emit(
+		string $namespace,
+		string $function,
+		string $location,
+		string $body,
+		?string $level = LogLevel::INFO
+    ): bool {
+
+		if (!self::isAllowed($level)) {
+            return false;
+        }
+
 		$date = new \DateTime('now', new \DateTimeZone('UTC'));
-		$time = $date->format('H:i:s') . ',' . substr($date->format('u'), 0, 5);
-
-		// prepend level (emoji + label)
+        $time = $date->format('H:i:s') . ',' . substr($date->format('u'), 0, 5);
 		$prefix = ($level !== null && $level !== '') ? $level . ' ' : '';
-
-		$header  = $prefix . $namespace . '\\' . $function . ' - ' . $time . PHP_EOL;
-		$header .= defined('SMARTDESK_REQ') ? var_export(constant('SMARTDESK_REQ'), true) . PHP_EOL : '';
-		$header .= $location . PHP_EOL . PHP_EOL;
-
-		$eol = '---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|-SmartDesk';
-
-		self::write($header . rtrim($body, PHP_EOL) . PHP_EOL . $eol . PHP_EOL);
-		return true;
-	}
+        $header  = $prefix . $namespace . '\\' . $function . ' - ' . $time . PHP_EOL;
+        $header .= defined('SMARTDESK_REQ') ? var_export(constant('SMARTDESK_REQ'), true) . PHP_EOL : '';
+        $header .= $location . PHP_EOL . PHP_EOL;
+        $eol = '---------|---------|---------|---------|---------';
+		$eol .= '|---------|---------|---------|---------|---------|-SmartDesk';
+        self::write($header . rtrim($body, PHP_EOL) . PHP_EOL . $eol . PHP_EOL);
+        return true;
+    }
 
 	/**
 	 * Extract caller information from the debug backtrace for SmartDesk classes.
@@ -406,53 +475,56 @@ final class DebugLogger {
 	 * get accurate file and line information when possible, falling back to backtrace data.
 	 * Returns default values if no suitable SmartDesk caller is found in the trace.
 	 *
-	 * @return array{0:string,1:string,2:string}	A three-element array containing:
-	 * 												[0]	The namespace portion of the calling class (e.g., 'SmartDesk\Utils'),
-	 * 													defaults to '[global scope]' if no SmartDesk caller found
-	 * 												[1]	The function name with class context (e.g., 'MyClass::myMethod()'),
-	 * 													defaults to '[unknown function]' if no SmartDesk caller found
-	 * 												[2]	The file path and line number (e.g., '/path/file.php:123'),
-	 * 													defaults to '[unknown location]' if no SmartDesk caller found
+	 * A three-element array containing:
+	 * 		[0]	The namespace portion of the calling class (e.g., 'SmartDesk\Utils'),
+	 * 			defaults to '[global scope]' if no SmartDesk caller found
+	 * 		[1]	The function name with class context (e.g., 'MyClass::myMethod()'),
+	 * 			defaults to '[unknown function]' if no SmartDesk caller found
+	 * 		[2]	The file path and line number (e.g., '/path/file.php:123'),
+	 * 			defaults to '[unknown location]' if no SmartDesk caller found
+	 * @return array{0:string,1:string,2:string}
+	 *
 	 */
-	private static function callerInfo(): array {
-		$trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 15);
-		$caller = null;
-		$namespace = '[global scope]';
-		$function = '[unknown function]';
-		$location = '[unknown location]';
+	private static function callerInfo(): array
+    {
 
-		foreach ($trace as $frame) {
-		$frameClass = $frame['class'] ?? null;
-		if (is_string($frameClass)
-			&& str_starts_with($frameClass, 'SmartDesk\\')
-			&& $frameClass !== __CLASS__) {
-				$caller = $frame;
-				break;
-			}
-		}
+		$trace		= debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 15);
+        $caller		= null;
+        $namespace	= '[global scope]';
+        $function	= '[unknown function]';
+        $location	= '[unknown location]';
+        foreach ($trace as $frame) {
+            $frameClass = $frame['class'] ?? null;
+            if (
+                is_string($frameClass)
+                && str_starts_with($frameClass, 'SmartDesk\\')
+                && $frameClass !== __CLASS__
+            ) {
+                $caller = $frame;
+                break;
+            }
+        }
 		if (!$caller) {
-			return [$namespace, $function, $location];
-		}
+            return [$namespace, $function, $location];
+        }
 
 		if (isset($caller['class'])) {
-			$fullClass = $caller['class'];
-			$parts = explode('\\', $fullClass);
-			$function = end($parts) . '::' . ($caller['function'] ?? '[unknown]') . '()';
-
-			array_pop($parts);
-			$namespace = implode('\\', $parts) ?: $namespace;
-
-			try {
-				$reflector = new \ReflectionMethod($caller['class'], $caller['function']);
-				$location = $reflector->getFileName() . ':' . $reflector->getStartLine();
-			} catch (\ReflectionException $e) {
-				if (isset($caller['file'], $caller['line'])) {
-					$location = $caller['file'] . ':' . $caller['line'];
-				}
-			}
-		}
+            $fullClass = $caller['class'];
+            $parts = explode('\\', $fullClass);
+            $function = end($parts) . '::' . $caller['function'] . '()';
+            array_pop($parts);
+            $namespace = implode('\\', $parts) ?: $namespace;
+            try {
+                $reflector = new \ReflectionMethod($caller['class'], $caller['function']);
+                $location = $reflector->getFileName() . ':' . $reflector->getStartLine();
+            } catch (\ReflectionException $e) {
+                if (isset($caller['file'], $caller['line'])) {
+                    $location = $caller['file'] . ':' . $caller['line'];
+                }
+            }
+        }
 		return [$namespace, $function, $location];
-	}
+    }
 
 	/**
 	 * Normalize and expand hook names into a deduplicated array of individual hook names.
@@ -463,43 +535,50 @@ final class DebugLogger {
 	 * comma-separated strings, arrays, and null values. Automatically deduplicates hook names and
 	 * trims whitespace from all entries.
 	 *
-	 * @param	null|string|array	$hooks	The hook specification to normalize. Can be:
-	 * 											- null:		Uses the default preset (DEFAULT_PRESET constant)
-	 * 											- string:	Either a preset key ('load', 'register', etc.) or comma-separated hook names
-	 * 											- array:	Mixed array of preset keys and/or individual hook names
-	 * 										Preset keys are expanded to their full hook arrays from HOOK_PRESETS.
-	 * 										Individual hook names are added directly after trimming whitespace.
-	 * 
-	 * @return	string[]					Array of unique WordPress hook names with duplicates removed.
-	 * 										Empty strings and whitespace-only entries are filtered out.
-	 * 										Order is preserved based on input order and preset definitions.
+	 * The hook specification to normalize. Can be:
+	 * 		- null:		Uses the default preset (DEFAULT_PRESET constant)
+	 * 		- string:	Either a preset key ('load', 'register', etc.) or comma-separated hook names
+	 * 		- array:	Mixed array of preset keys and/or individual hook names
+	 * 					Preset keys are expanded to their full hook arrays from HOOK_PRESETS.
+	 * 					Individual hook names are added directly after trimming whitespace.
+	 * @param	array<int,string>|string|null	$hooks
+	 *
+	 * @return	string[]						Array of unique WordPress hook names with duplicates removed.
+	 * 											Empty strings and whitespace-only entries are filtered out.
+	 * 											Order is preserved based on input order and preset definitions.
 	 */
-	private static function normalizeHooks(null|string|array $hooks): array {
+	private static function normalizeHooks(null|string|array $hooks): array
+    {
+
 		if ($hooks === null) {
-			$hooks = [self::DEFAULT_PRESET];
-		}
+            $hooks = [self::DEFAULT_PRESET];
+        }
 
 		$list = [];
-		$push = static function (string $hook) use (&$list) {
+        $push = static function (string $hook) use (&$list) {
+
 			$hook = trim($hook);
-			if ($hook !== '' && !in_array($hook, $list, true)) {
-				$list[] = $hook;
-			}
-		};
+            if ($hook !== '' && !in_array($hook, $list, true)) {
+                $list[] = $hook;
+            }
+        };
+        $items = is_array($hooks) ? $hooks : explode(',', (string) $hooks);
+        foreach ($items as $item) {
+            $item = trim((string) $item);
+            if ($item === '') {
+                continue;
+            }
 
-		$items = is_array($hooks) ? $hooks : explode(',', (string) $hooks);
-		foreach ($items as $item) {
-			$item = trim((string) $item);
-			if ($item === '') continue;
-
-			if (isset(self::HOOK_PRESETS[$item])) {
-				foreach (self::HOOK_PRESETS[$item] as $h) $push($h);
-			} else {
-				$push($item);
-			}
-		}
+            if (isset(self::HOOK_PRESETS[$item])) {
+                foreach (self::HOOK_PRESETS[$item] as $h) {
+                    $push($h);
+                }
+            } else {
+                $push($item);
+            }
+        }
 		return $list;
-	}
+    }
 
 	/**
 	 * Format a hooks status block for debug output.
@@ -512,28 +591,30 @@ final class DebugLogger {
 	 * @param	string[]	$hooks	Array of WordPress hook names to check status for.
 	 * 								Each element should be a valid WordPress hook name string.
 	 * 								Empty array will result in an empty string return.
-	 * 
+	 *
 	 * @return	string				Formatted hooks status block with tab indentation and emoji indicators.
 	 * 								Returns empty string if no hooks provided. Each hook appears on its own line
 	 * 								with appropriate status indicator and execution count if applicable.
 	 * 								Trailing newlines are removed from the final output.
 	 */
-	/** @param array<int,string> $hooks */
-	private static function formatHooksBlock(array $hooks): string {
-		if (empty($hooks)) return '';
+	private static function formatHooksBlock(array $hooks): string
+    {
+
+		if (empty($hooks)) {
+            return '';
+        }
 
 		$out = "\thooks:" . PHP_EOL;
-
-		foreach ($hooks as $h) {
-			$count = function_exists('did_action') ? (int) did_action($h) : 0;
-			if ($count > 0) {
-				$out .= "\t\t♻️ {$h} ({$count} times fired)" . PHP_EOL;
-			} else {
-				$out .= "\t\t⏳ {$h}" . PHP_EOL;
-			}
-		}
+        foreach ($hooks as $h) {
+            $count = function_exists('did_action') ? (int) did_action($h) : 0;
+            if ($count > 0) {
+                $out .= "\t\t♻️ {$h} ({$count} times fired)" . PHP_EOL;
+            } else {
+                $out .= "\t\t⏳ {$h}" . PHP_EOL;
+            }
+        }
 		return rtrim($out, PHP_EOL);
-	}
+    }
 
 	/**
 	 * Render any value into a pretty, tab-indented string for debug output.
@@ -548,26 +629,27 @@ final class DebugLogger {
 	 * @param	mixed	$data	The data to format - can be any PHP type including arrays,
 	 * 							objects, scalars, null, booleans, etc. Each type is
 	 * 							handled with appropriate formatting rules for readability.
-	 * 
+	 *
 	 * @return	string			Formatted string representation with tab indentation.
 	 * 							Arrays get structured formatting, objects show class name
 	 * 							and properties, scalars are converted to readable strings.
 	 * 							Trailing newlines are removed from the final output.
 	 */
-	private static function formatData(mixed $data): string {
+	private static function formatData(mixed $data): string
+    {
 		if (is_array($data)) {
-			return self::formatArray($data, 1, true);
-		}
+            return self::formatArray($data, 1, true);
+        }
 		if (is_object($data)) {
-			$indent = str_repeat("\t", 1);
-			$out = $indent . '(object ' . get_class($data) . ')' . PHP_EOL;
-			$obj = str_replace("\n", "\n$indent", print_r($data, true));
-			$out .= $indent . $obj;
-			return rtrim($out, PHP_EOL);
-		}
+            $indent = str_repeat("\t", 1);
+            $out = $indent . '(object ' . get_class($data) . ')' . PHP_EOL;
+            $obj = str_replace("\n", "\n$indent", print_r($data, true));
+            $out .= $indent . $obj;
+            return rtrim($out, PHP_EOL);
+        }
 		$indent = str_repeat("\t", 1);
-		return $indent . self::scalarToString($data);
-	}
+        return $indent . self::scalarToString($data);
+    }
 
 	/**
 	 * Format arrays into human-readable, indented strings with proper nesting and braces.
@@ -587,70 +669,68 @@ final class DebugLogger {
 	 * @param	bool			$topLevel	Whether this is a top-level array call. When true,
 	 * 										suppresses the opening brace for the current array level.
 	 * 										Defaults to false. Used internally for recursive calls.
-	 * 
+	 *
 	 * @return	string						Formatted string representation of the array with proper
 	 * 										indentation, braces, and structure. Trailing newlines
 	 * 										are removed. Empty arrays return empty strings.
 	 */
-	/** @param array<mixed> $arr */
-	private static function formatArray(array $arr, int $depth = 1, bool $topLevel = false): string {
+	private static function formatArray(array $arr, int $depth = 1, bool $topLevel = false): string
+    {
 		$indent = str_repeat("\t", $depth);
-		$parentInd = $depth > 0 ? str_repeat("\t", $depth - 1) : '';
-
-		// List without keys
+        $parentInd = $depth > 0 ? str_repeat("\t", $depth - 1) : '';
+// List without keys
 		if (self::arrayIsList($arr)) {
-			$out = '';
-			foreach ($arr as $item) {
-				// strings inline, nested structured blocks with braces
+            $out = '';
+            foreach ($arr as $item) {
+            // strings inline, nested structured blocks with braces
 				if (is_string($item)) {
-					$out .= $indent . $item . PHP_EOL;
-				} elseif (is_array($item)) {
-					$out .= $indent . "{\n";
-					$out .= self::formatArray($item, $depth + 2, true) . PHP_EOL;
-					$out .= $indent . "\t\t}\n";
-				} elseif (is_object($item)) {
-					$out .= $indent . '(object ' . get_class($item) . ")\n";
-					$obj = str_replace("\n", "\n$indent", print_r($item, true));
-					$out .= $indent . $obj . "\n";
-				} else {
-					$out .= $indent . self::scalarToString($item) . PHP_EOL;
-				}
-			}
+                    $out .= $indent . $item . PHP_EOL;
+                } elseif (is_array($item)) {
+                    $out .= $indent . "{\n";
+                    $out .= self::formatArray($item, $depth + 2, true) . PHP_EOL;
+                    $out .= $indent . "\t\t}\n";
+                } elseif (is_object($item)) {
+                    $out .= $indent . '(object ' . get_class($item) . ")\n";
+                    $obj = str_replace("\n", "\n$indent", print_r($item, true));
+                    $out .= $indent . $obj . "\n";
+                } else {
+                    $out .= $indent . self::scalarToString($item) . PHP_EOL;
+                }
+            }
 			return rtrim($out, PHP_EOL);
-		}
+        }
 
 		// Mixed array with keys
 		$out = '';
-		if (!$topLevel) {
-			$out .= "{\n";
-		}
+        if (!$topLevel) {
+            $out .= "{\n";
+        }
 
 		foreach ($arr as $k => $v) {
-			$keyLabel = ($k === '' ? '[empty]' : (is_int($k) ? '[' . $k . ']' : (string) $k));
-
-			if (is_int($k) && is_string($v)) {
-				$out .= $indent . $v . PHP_EOL;
-				continue;
-			}
+            $keyLabel = ($k === '' ? '[empty]' : (is_int($k) ? '[' . $k . ']' : (string) $k));
+            if (is_int($k) && is_string($v)) {
+                $out .= $indent . $v . PHP_EOL;
+                continue;
+            }
 
 			if (is_array($v)) {
-				$out .= $indent . $keyLabel . " => {\n";
-				$out .= self::formatArray($v, $depth + 2, true) . PHP_EOL;
-				$out .= $indent . "\t\t}\n";
-			} elseif (is_object($v)) {
-				$out .= $indent . $keyLabel . ' => (object ' . get_class($v) . ")\n";
-				$obj = str_replace("\n", "\n$indent", print_r($v, true));
-				$out .= $indent . $obj . "\n";
-			} else {
-				$out .= $indent . $keyLabel . ' => ' . self::scalarToString($v) . PHP_EOL;
-			}
-		}
+                $out .= $indent . $keyLabel . " => {\n";
+                $out .= self::formatArray($v, $depth + 2, true) . PHP_EOL;
+                $out .= $indent . "\t\t}\n";
+            } elseif (is_object($v)) {
+                $out .= $indent . $keyLabel . ' => (object ' . get_class($v) . ")\n";
+                $obj = str_replace("\n", "\n$indent", print_r($v, true));
+                $out .= $indent . $obj . "\n";
+            } else {
+                $out .= $indent . $keyLabel . ' => ' . self::scalarToString($v) . PHP_EOL;
+            }
+        }
 
 		if (!$topLevel) {
-			$out .= $parentInd . "}";
-		}
+            $out .= $parentInd . "}";
+        }
 		return rtrim($out, PHP_EOL);
-	}
+    }
 
 	/**
 	 * Convert scalar values to human-readable strings with explicit markers for edge cases.
@@ -666,19 +746,28 @@ final class DebugLogger {
 	 * 						including boolean, null, string, integer, float, or other
 	 * 						scalar types. Non-scalar types will be cast to string
 	 * 						using PHP's default conversion behavior.
-	 * 
+	 *
 	 * @return	string		Human-readable string representation of the input value.
 	 * 						Special cases return: 'true'/'false' for booleans, 'null'
 	 * 						for null values, '[empty-string]' for empty strings, '[empty]'
 	 * 						for other empty values, or the string-cast value otherwise.
 	 */
-	private static function scalarToString(mixed $v): string {
-		if (is_bool($v)) return $v ? 'true' : 'false';
-		if ($v === null) return 'null';
-		if (is_string($v) && $v === '') return '[empty-string]';
-		if ($v === '') return '[empty]';
+	private static function scalarToString(mixed $v): string
+    {
+		if (is_bool($v)) {
+            return $v ? 'true' : 'false';
+        }
+		if ($v === null) {
+            return 'null';
+        }
+		if (is_string($v) && $v === '') {
+            return '[empty-string]';
+        }
+		if ($v === '') {
+            return '[empty]';
+        }
 		return (string) $v;
-	}
+    }
 
 	/**
 	 * Determine if an array is a sequential list with consecutive integer keys starting from 0.
@@ -687,22 +776,22 @@ final class DebugLogger {
 	 * starting from 0) versus an associative array with string keys or non-sequential
 	 * numeric keys. Uses PHP 8.1's native array_is_list() function when available,
 	 * otherwise falls back to manual key comparison for compatibility with older PHP versions.
-	 *		
-	 * @param	array	$arr	The array to check for list structure. Can be empty or contain
-	 * 							any mix of values. Only the key structure is examined, not
-	 * 							the values themselves.
-	 * 
+	 *
+	 * @param	array<mixed>	$arr	The array to check for list structure. Can be empty or contain
+	 * 									any mix of values. Only the key structure is examined, not
+	 * 									the values themselves.
+	 *
 	 * @return	bool			True if the array is a sequential list with keys [0, 1, 2, ...],
 	 * 							false if it has string keys, non-sequential numeric keys, or
 	 * 							gaps in the sequence. Empty arrays return true.
 	 */
-	/** @param array<mixed> $arr */
-	private static function arrayIsList(array $arr): bool {
+	private static function arrayIsList(array $arr): bool
+    {
 		if (function_exists('array_is_list')) {
-			return array_is_list($arr);
-		}
+            return array_is_list($arr);
+        }
 		return array_keys($arr) === range(0, count($arr) - 1);
-	}
+    }
 
 	#endregion
 
@@ -721,14 +810,17 @@ final class DebugLogger {
 	 * 							timer when calling timerStop(). If a timer with the same ID
 	 * 							already exists, it will be overwritten with a new start time.
 	 * 							Should be a descriptive name like 'database_query' or 'api_call'.
-	 * 
+	 *
 	 * @return	void			No return value. The timer is stored internally and can be
 	 * 							stopped later using timerStop() with the same ID.
 	 */
-	public static function timerStart(string $id): void {
-		if (!self::isDebugEnabled()) return;
+	public static function timerStart(string $id): void
+    {
+		if (!self::isDebugEnabled()) {
+            return;
+        }
 		self::$timers[$id] = microtime(true);
-	}
+    }
 
 	/**
 	 * Record a lap time for a named timer and log the elapsed duration since start or last lap.
@@ -748,25 +840,26 @@ final class DebugLogger {
 	 * @param	null|string		$level	Optional log level using LogLevel constants (DEBUG, INFO, WARNING, etc.).
 	 * 									Defaults to LogLevel::DEBUG. Determines the priority level
 	 * 									of the lap time log entry for filtering purposes.
-	 * 
+	 *
 	 * @return	void					No return value. The lap duration is logged to the configured
 	 * 									output sink and the timer continues running for future laps or stop.
 	 */
-	public static function timerLap(string $id, string $title = 'lap', ?string $level = LogLevel::DEBUG): void {
-		if (!self::isDebugEnabled()) return;
+	public static function timerLap(string $id, string $title = 'lap', ?string $level = LogLevel::DEBUG): void
+    {
+		if (!self::isDebugEnabled()) {
+            return;
+        }
 
 		if (!isset(self::$timers[$id])) {
-			self::$timers[$id] = microtime(true);
-		}
+            self::$timers[$id] = microtime(true);
+        }
 
 		$elapsed = microtime(true) - self::$timers[$id];
-		[$ns, $func, $location] = self::callerInfo();
-
-		$body = "\t" . ($title !== '' ? $title : 'lap') . PHP_EOL
+        [$ns, $func, $location] = self::callerInfo();
+        $body = "\t" . ($title !== '' ? $title : 'lap') . PHP_EOL
 			. "\tTimer '{$id}' finished in " . \number_format($elapsed, 4) . "s";
-
-		self::emit($ns, $func, $location, $body, $level ?? LogLevel::DEBUG);
-	}
+        self::emit($ns, $func, $location, $body, $level ?? LogLevel::DEBUG);
+    }
 
 
 	/**
@@ -787,29 +880,34 @@ final class DebugLogger {
 	 * @param	null|string		$level	Optional log level using LogLevel constants (DEBUG, INFO, WARNING, etc.).
 	 * 									Defaults to LogLevel::INFO for successful timer stops.
 	 * 									Warning messages for missing timers always use WARNING level.
-	 * 
+	 *
 	 * @return	void					No return value. The timer duration is logged to the configured
 	 * 									output sink and the timer is removed from internal storage.
 	 */
-	public static function timerStop(string $id, ?string $title = null, ?string $level = \SmartDesk\Utils\Support\LogLevel::INFO): void {
-		if (!self::isDebugEnabled()) return;
+	public static function timerStop(
+		string $id,
+		?string $title = null,
+		?string $level = \SmartDesk\Utils\Support\LogLevel::INFO
+    ): void {
+
+		if (!self::isDebugEnabled()) {
+            return;
+        }
 		if (!isset(self::$timers[$id])) {
-			self::log("Timer '$id' not started", null, $title ?? 'Timer error', \SmartDesk\Utils\Support\LogLevel::WARNING);
-			return;
-		}
+            self::log(
+				"Timer '$id' not started",
+				null,
+				$title ?? 'Timer error',
+				\SmartDesk\Utils\Support\LogLevel::WARNING
+			);
+            return;
+        }
 		$start = self::$timers[$id];
-		unset(self::$timers[$id]);
-
-		$duration = microtime(true) - $start;
-		$formatted = number_format($duration, 4) . 's';
-
-		self::log(
-			"Timer '$id' finished in " . $formatted,
-			null,
-			$title ?? 'Timer finished',
-			$level
-		);
-	}
+        unset(self::$timers[$id]);
+        $duration = microtime(true) - $start;
+        $formatted = number_format($duration, 4) . 's';
+        self::log("Timer '$id' finished in " . $formatted, null, $title ?? 'Timer finished', $level);
+    }
 
 	#endregion
 
@@ -822,17 +920,24 @@ final class DebugLogger {
 	 * hook status information at DEBUG level. Equivalent to calling log() with LogLevel::DEBUG.
 	 * Only active when WP_DEBUG is enabled, otherwise the call is silently ignored.
 	 *
-	 * @param	mixed				$data	The data to log - can be any type (array, object, scalar, etc.)
-	 * @param	null|string|array	$hooks	Optional hook preset name(s) or specific hook names to check status for.
-	 * 										Can be a preset key ('load', 'register', 'admin', etc.), comma-separated string,
-	 * 										or array of hook names. Defaults to 'register' preset if null.
-	 * @param	null|string			$title	Optional title line to display at the top of the log entry
-	 * 
-	 * @return	bool				True if the log entry was written successfully, false if WP_DEBUG is disabled
+	 * The data to log - can be any type (array, object, scalar, etc.)
+	 * @param	mixed				$data
+	 *
+	 * Optional hook preset name(s) or specific hook names to check status for.
+	 * Can be a preset key ('load', 'register', 'admin', etc.), comma-separated string,
+	 * or array of hook names. Defaults to 'register' preset if null.
+	 * @param	array<int,string>|string|null	$hooks
+	 *
+	 * Optional title line to display at the top of the log entry
+	 * @param	null|string						$title
+	 *
+	 * True if the log entry was written successfully, false if WP_DEBUG is disabled
+	 * @return	bool
 	 */
-	public static function debug(mixed $data, null|string|array $hooks = null, ?string $title = null): bool {
+	public static function debug(mixed $data, null|string|array $hooks = null, ?string $title = null): bool
+    {
 		return self::log($data, $hooks, $title, LogLevel::DEBUG);
-	}
+    }
 
 	/**
 	 * Log informational data with INFO level priority.
@@ -841,17 +946,23 @@ final class DebugLogger {
 	 * hook status information at INFO level. Equivalent to calling log() with LogLevel::INFO.
 	 * Only active when WP_DEBUG is enabled, otherwise the call is silently ignored.
 	 *
-	 * @param	mixed				$data	The data to log - can be any type (array, object, scalar, etc.)
-	 * @param	null|string|array	$hooks	Optional hook preset name(s) or specific hook names to check status for.
-	 * 										Can be a preset key ('load', 'register', 'admin', etc.), comma-separated string,
-	 * 										or array of hook names. Defaults to 'register' preset if null.
-	 * @param	null|string			$title	Optional title line to display at the top of the log entry
-	 * 
-	 * @return	bool				True if the log entry was written successfully, false if WP_DEBUG is disabled
+	 * The data to log - can be any type (array, object, scalar, etc.)
+	 * @param	mixed							$data
+	 *
+	 * Optional hook preset name(s) or specific hook names to check status for.
+	 * Can be a preset key ('load', 'register', 'admin', etc.), comma-separated string,
+	 * or array of hook names. Defaults to 'register' preset if null.
+	 * @param	array<int,string>|string|null	$hooks
+	 *
+	 * Optional title line to display at the top of the log entry
+	 * @param	null|string						$title
+	 *
+	 * @return	bool	True if the log entry was written successfully, false if WP_DEBUG is disabled
 	 */
-	public static function info(mixed $data, null|string|array $hooks = null, ?string $title = null): bool {
+	public static function info(mixed $data, null|string|array $hooks = null, ?string $title = null): bool
+    {
 		return self::log($data, $hooks, $title, LogLevel::INFO);
-	}
+    }
 
 	/**
 	 * Log notice data with NOTICE level priority.
@@ -860,17 +971,23 @@ final class DebugLogger {
 	 * hook status information at NOTICE level. Equivalent to calling log() with LogLevel::NOTICE.
 	 * Only active when WP_DEBUG is enabled, otherwise the call is silently ignored.
 	 *
-	 * @param	mixed				$data	The data to log - can be any type (array, object, scalar, etc.)
-	 * @param	@param array<int,string>|string|null	$hooks	Optional hook preset name(s) or specific hook names to check status for.
-	 * 										Can be a preset key ('load', 'register', 'admin', etc.), comma-separated string,
-	 * 										or array of hook names. Defaults to 'register' preset if null.
-	 * @param	null|string			$title	Optional title line to display at the top of the log entry
-	 * 
-	 * @return	bool				True if the log entry was written successfully, false if WP_DEBUG is disabled
+	 * The data to log - can be any type (array, object, scalar, etc.)
+	 * @param	mixed							$data
+	 *
+	 * Optional hook preset name(s) or specific hook names to check status for.
+	 * Can be a preset key ('load', 'register', 'admin', etc.), comma-separated string,
+	 * or array of hook names. Defaults to 'register' preset if null.
+	 * @param	array<int,string>|string|null	$hooks
+	 *
+	 * Optional title line to display at the top of the log entry
+	 * @param	null|string						$title
+	 *
+	 * @return	bool	True if the log entry was written successfully, false if WP_DEBUG is disabled
 	 */
-	public static function notice(mixed $data, null|string|array $hooks = null, ?string $title = null): bool {
+	public static function notice(mixed $data, null|string|array $hooks = null, ?string $title = null): bool
+    {
 		return self::log($data, $hooks, $title, LogLevel::NOTICE);
-	}
+    }
 
 	/**
 	 * Log warning data with WARNING level priority.
@@ -879,18 +996,23 @@ final class DebugLogger {
 	 * hook status information at WARNING level. Equivalent to calling log() with LogLevel::WARNING.
 	 * Only active when WP_DEBUG is enabled, otherwise the call is silently ignored.
 	 *
-	 * @param	mixed				$data	The data to log - can be any type (array, object, scalar, etc.)
-	 * @param	null|string|array	$hooks	Optional hook preset name(s) or specific hook names to check status for.
-	 * 										Can be a preset key ('load', 'register', 'admin', etc.), comma-separated string,
-	 * 										or array of hook names. Defaults to 'register' preset if null.
-	 * @param	null|string			$title	Optional title line to display at the top of the log entry
-	 * 
-	 * @return	bool				True if the log entry was written successfully, false if WP_DEBUG is disabled
+	 * The data to log - can be any type (array, object, scalar, etc.)
+	 * @param	mixed							$data
+	 *
+	 * Optional hook preset name(s) or specific hook names to check status for.
+	 * Can be a preset key ('load', 'register', 'admin', etc.), comma-separated string,
+	 * or array of hook names. Defaults to 'register' preset if null.
+	 * @param	array<int,string>|string|null	$hooks
+	 *
+	 * Optional title line to display at the top of the log entry
+	 * @param	null|string						$title
+	 *
+	 * @return	bool	True if the log entry was written successfully, false if WP_DEBUG is disabled
 	 */
-	/** @param array<int,string>|string|null $hooks */
-	public static function warning(mixed $data, null|string|array $hooks = null, ?string $title = null): bool {
+	public static function warning(mixed $data, null|string|array $hooks = null, ?string $title = null): bool
+    {
 		return self::log($data, $hooks, $title, LogLevel::WARNING);
-	}
+    }
 
 	/**
 	 * Log alert data with ALERT level priority.
@@ -899,18 +1021,23 @@ final class DebugLogger {
 	 * hook status information at ALERT level. Equivalent to calling log() with LogLevel::ALERT.
 	 * Only active when WP_DEBUG is enabled, otherwise the call is silently ignored.
 	 *
-	 * @param	mixed				$data	The data to log - can be any type (array, object, scalar, etc.)
-	 * @param	null|string|array	$hooks	Optional hook preset name(s) or specific hook names to check status for.
-	 * 										Can be a preset key ('load', 'register', 'admin', etc.), comma-separated string,
-	 * 										or array of hook names. Defaults to 'register' preset if null.
-	 * @param	null|string			$title	Optional title line to display at the top of the log entry
-	 * 
-	 * @return	bool				True if the log entry was written successfully, false if WP_DEBUG is disabled
+	 * The data to log - can be any type (array, object, scalar, etc.)
+	 * @param	mixed							$data
+	 *
+	 * Optional hook preset name(s) or specific hook names to check status for.
+	 * Can be a preset key ('load', 'register', 'admin', etc.), comma-separated string,
+	 * or array of hook names. Defaults to 'register' preset if null.
+	 * @param	array<int,string>|string|null	$hooks
+	 *
+	 * Optional title line to display at the top of the log entry
+	 * @param	null|string						$title
+	 *
+	 * @return	bool	True if the log entry was written successfully, false if WP_DEBUG is disabled
 	 */
-	/** @param array<int,string>|string|null $hooks */
-	public static function alert(mixed $data, null|string|array $hooks = null, ?string $title = null): bool {
+	public static function alert(mixed $data, null|string|array $hooks = null, ?string $title = null): bool
+    {
 		return self::log($data, $hooks, $title, LogLevel::ALERT);
-	}
+    }
 
 	/**
 	 * Log emergency data with EMERGENCY level priority.
@@ -919,18 +1046,23 @@ final class DebugLogger {
 	 * hook status information at EMERGENCY level. Equivalent to calling log() with LogLevel::EMERGENCY.
 	 * Only active when WP_DEBUG is enabled, otherwise the call is silently ignored.
 	 *
-	 * @param	mixed				$data	The data to log - can be any type (array, object, scalar, etc.)
-	 * @param	null|string|array	$hooks	Optional hook preset name(s) or specific hook names to check status for.
-	 * 										Can be a preset key ('load', 'register', 'admin', etc.), comma-separated string,
-	 * 										or array of hook names. Defaults to 'register' preset if null.
-	 * @param	null|string			$title	Optional title line to display at the top of the log entry
-	 * 
-	 * @return	bool				True if the log entry was written successfully, false if WP_DEBUG is disabled
+	 * The data to log - can be any type (array, object, scalar, etc.)
+	 * @param	mixed							$data
+	 *
+	 * Optional hook preset name(s) or specific hook names to check status for.
+	 * Can be a preset key ('load', 'register', 'admin', etc.), comma-separated string,
+	 * or array of hook names. Defaults to 'register' preset if null.
+	 * @param	array<int,string>|string|null	$hooks
+	 *
+	 * Optional title line to display at the top of the log entry
+	 * @param	null|string						$title
+	 *
+	 * @return	bool	True if the log entry was written successfully, false if WP_DEBUG is disabled
 	 */
-	/** @param array<int,string>|string|null $hooks */
-	public static function emergency(mixed $data, null|string|array $hooks = null, ?string $title = null): bool {
+	public static function emergency(mixed $data, null|string|array $hooks = null, ?string $title = null): bool
+    {
 		return self::log($data, $hooks, $title, LogLevel::EMERGENCY);
-	}
+    }
 
 	/**
 	 * Log error data with ERROR level priority.
@@ -939,18 +1071,23 @@ final class DebugLogger {
 	 * hook status information at ERROR level. Equivalent to calling log() with LogLevel::ERROR.
 	 * Only active when WP_DEBUG is enabled, otherwise the call is silently ignored.
 	 *
-	 * @param	mixed				$data	The data to log - can be any type (array, object, scalar, etc.)
-	 * @param	null|string|array	$hooks	Optional hook preset name(s) or specific hook names to check status for.
-	 * 										Can be a preset key ('load', 'register', 'admin', etc.), comma-separated string,
-	 * 										or array of hook names. Defaults to 'register' preset if null.
-	 * @param	null|string			$title	Optional title line to display at the top of the log entry
-	 * 
-	 * @return	bool				True if the log entry was written successfully, false if WP_DEBUG is disabled
+	 * The data to log - can be any type (array, object, scalar, etc.)
+	 * @param	mixed							$data
+	 *
+	 * Optional hook preset name(s) or specific hook names to check status for.
+	 * Can be a preset key ('load', 'register', 'admin', etc.), comma-separated string,
+	 * or array of hook names. Defaults to 'register' preset if null.
+	 * @param	array<int,string>|string|null	$hooks
+	 *
+	 * Optional title line to display at the top of the log entry
+	 * @param	null|string						$title
+	 *
+	 * @return	bool	True if the log entry was written successfully, false if WP_DEBUG is disabled
 	 */
-	/** @param array<int,string>|string|null $hooks */
-	public static function error(mixed $data, null|string|array $hooks = null, ?string $title = null): bool {
+	public static function error(mixed $data, null|string|array $hooks = null, ?string $title = null): bool
+    {
 		return self::log($data, $hooks, $title, LogLevel::ERROR);
-	}
+    }
 
 	/**
 	 * Log critical data with CRITICAL level priority.
@@ -959,19 +1096,23 @@ final class DebugLogger {
 	 * hook status information at CRITICAL level. Equivalent to calling log() with LogLevel::CRITICAL.
 	 * Only active when WP_DEBUG is enabled, otherwise the call is silently ignored.
 	 *
-	 * @param	mixed				$data	The data to log - can be any type (array, object, scalar, etc.)
-	 * @param	null|string|array	$hooks	Optional hook preset name(s) or specific hook names to check status for.
-	 *  										Can be a preset key ('load', 'register', 'admin', etc.), comma-separated string,
-	 * 										or array of hook names. Defaults to 'register' preset if null.
-	 * @param	null|string			$title	Optional title line to display at the top of the log entry
-	 * 
-	 * @return	bool				True if the log entry was written successfully, false if WP_DEBUG is disabled
+	 * The data to log - can be any type (array, object, scalar, etc.)
+	 * @param	mixed							$data
+	 *
+	 * Optional hook preset name(s) or specific hook names to check status for.
+	 * Can be a preset key ('load', 'register', 'admin', etc.), comma-separated string,
+	 * or array of hook names. Defaults to 'register' preset if null.
+	 * @param	array<int,string>|string|null	$hooks
+	 *
+	 * Optional title line to display at the top of the log entry
+	 * @param	null|string						$title
+	 *
+	 * @return	bool	True if the log entry was written successfully, false if WP_DEBUG is disabled
 	 */
-	/** @param array<int,string>|string|null $hooks */
-	public static function critical(mixed $data, null|string|array $hooks = null, ?string $title = null): bool {
+	public static function critical(mixed $data, null|string|array $hooks = null, ?string $title = null): bool
+    {
 		return self::log($data, $hooks, $title, LogLevel::CRITICAL);
-	}
+    }
 
 	#endregion
-
 }

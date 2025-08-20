@@ -1,4 +1,5 @@
 <?php
+
 // SPDX-License-Identifier: GPL-3.0-or-later
 /**
  * SmartDesk DebugLogger
@@ -29,56 +30,58 @@ namespace SmartDesk\Utils\Handlers;
 
 /**
  * Simple callback wrapper to unify signature.
- * 
+ *
  * This class provides a standardized wrapper around user-defined callback functions
  * to ensure they conform to the logging framework's expected signature. It acts as
  * an adapter that allows arbitrary callable functions to be integrated seamlessly
  * into the logging system while maintaining consistent parameter handling.
- * 
+ *
  * The CallbackHandler is designed for symmetry with other handlers in the framework,
  * even though it's not directly used by DebugLogger. It enables developers to
  * create custom logging handlers using simple callback functions without needing
  * to implement complex handler interfaces.
  */
-final class CallbackHandler {
-
-	/** @var callable(string):void */
+final class CallbackHandler
+{
+	/** @var callable(string,string,array<string,mixed>):void */
 	private $callback;
 
 	/**
 	 * Initializes the CallbackHandler with a user-provided callback function.
-	 * 
+	 *
 	 * The constructor accepts a callable that must conform to the logging signature,
 	 * taking a log level, message line, and payload array as parameters. This callback
 	 * will be stored and later executed through the handler() method.
-	 * 
-	 * @param callable(string,string,array):void $callback	The callback function to be wrapped.
-	 * 														Must accept three parameters:
-	 * 															- string $level: The log level (e.g., 'info', 'error')
-	 * 															- string $line: The log message or line content
-	 * 															- array $payload: Additional data or context for the log entry
+	 *
+	 * The callback function to be wrapped.
+	 * Must accept three parameters:
+	 * 		- string $level: The log level (e.g., 'info', 'error')
+	 * 		- string $line: The log message or line content
+	 * 		- array $payload: Additional data or context for the log entry
+	 * @param callable(string,string,array<string,mixed>):void  $callback
+	 *
 	 */
-	/** @param callable(string):void $callback */
-	public function __construct(callable $callback) {
+	public function __construct(callable $callback)
+    {
 		$this->callback = $callback;
-	}
+    }
 
 	/**
 	 * Returns a callable wrapper that executes the stored callback with logging parameters.
-	 * 
+	 *
 	 * This method provides a standardized callable interface that can be used by logging
 	 * systems. The returned function maintains the same signature as other handlers in
 	 * the logging framework while delegating execution to the user-provided callback.
-	 * 
-	 * @return callable(string,string,array):void	A callable that accepts logging parameters
-	 * 												and forwards them to the stored callback
+	 *
+	 * @return callable(string,string,array<string,mixed>):void	A callable that accepts logging parameters
+	 * 															and forwards them to the stored callback
 	 */
-	/** @return array<string,mixed> */
-	public function handler(): callable	{
+	public function handler(): callable
+    {
 		$cb = $this->callback;
-		return static function (string $level, string $line, array $payload) use ($cb): void {
+        return static function (string $level, string $line, array $payload) use ($cb): void {
+
 			$cb($level, $line, $payload);
-		};
+        };
 	}
-	
 }

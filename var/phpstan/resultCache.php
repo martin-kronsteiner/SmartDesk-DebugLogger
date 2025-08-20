@@ -1,29 +1,29 @@
 <?php declare(strict_types = 1);
 
 return [
-	'lastFullAnalysisTime' => 1755694886,
+	'lastFullAnalysisTime' => 1755699688,
 	'meta' => array (
   'cacheVersion' => 'v12-linesToIgnore',
   'phpstanVersion' => '2.1.22',
   'metaExtensions' => 
   array (
   ),
-  'phpVersion' => 80404,
-  'projectConfig' => '{parameters: {level: 8, paths: [C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src], tmpDir: C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\var\\phpstan, inferPrivatePropertyTypeFromConstructor: true, treatPhpDocTypesAsCertain: false}}',
+  'phpVersion' => 80410,
+  'projectConfig' => '{parameters: {level: 8, paths: [C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\src], tmpDir: C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\var\\phpstan, inferPrivatePropertyTypeFromConstructor: true, treatPhpDocTypesAsCertain: false}}',
   'analysedPaths' => 
   array (
-    0 => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src',
+    0 => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\src',
   ),
   'scannedFiles' => 
   array (
   ),
   'composerLocks' => 
   array (
-    'C:/Users/MKR/Documents/My Web Sites/rys/app/public/wp-content/plugins/SmartDesk-DebugLogger/composer.lock' => 'a45b6549ca8c2fa915c9dc4a24ce320e6980579a',
+    'C:/Users/MKR.DESKTOP-001/Documents/My Web Sites/SmartDesk-DebugLogger/composer.lock' => '52d43384223e888d85fb5fab76b24cb0a5bf50d0',
   ),
   'composerInstalled' => 
   array (
-    'C:/Users/MKR/Documents/My Web Sites/rys/app/public/wp-content/plugins/SmartDesk-DebugLogger/vendor/composer/installed.php' => 
+    'C:/Users/MKR.DESKTOP-001/Documents/My Web Sites/SmartDesk-DebugLogger/vendor/composer/installed.php' => 
     array (
       'versions' => 
       array (
@@ -33,7 +33,7 @@ return [
           'version' => '1.13.4.0',
           'reference' => '07d290f0c47959fd5eed98c95ee5602db07e0b6a',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../myclabs/deep-copy',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../myclabs/deep-copy',
           'aliases' => 
           array (
           ),
@@ -45,7 +45,7 @@ return [
           'version' => '5.6.1.0',
           'reference' => 'f103601b29efebd7ff4a1ca7b3eeea9e3336a2a2',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../nikic/php-parser',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../nikic/php-parser',
           'aliases' => 
           array (
           ),
@@ -57,7 +57,7 @@ return [
           'version' => '2.0.4.0',
           'reference' => '54750ef60c58e43759730615a392c31c80e23176',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../phar-io/manifest',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../phar-io/manifest',
           'aliases' => 
           array (
           ),
@@ -69,7 +69,7 @@ return [
           'version' => '3.2.1.0',
           'reference' => '4f7fd7836c6f332bb2933569e566a0d6c4cbed74',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../phar-io/version',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../phar-io/version',
           'aliases' => 
           array (
           ),
@@ -81,7 +81,7 @@ return [
           'version' => '2.1.22.0',
           'reference' => '41600c8379eb5aee63e9413fe9e97273e25d57e4',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../phpstan/phpstan',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../phpstan/phpstan',
           'aliases' => 
           array (
           ),
@@ -93,7 +93,7 @@ return [
           'version' => '10.1.16.0',
           'reference' => '7e308268858ed6baedc8704a304727d20bc07c77',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../phpunit/php-code-coverage',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../phpunit/php-code-coverage',
           'aliases' => 
           array (
           ),
@@ -105,7 +105,7 @@ return [
           'version' => '4.1.0.0',
           'reference' => 'a95037b6d9e608ba092da1b23931e537cadc3c3c',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../phpunit/php-file-iterator',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../phpunit/php-file-iterator',
           'aliases' => 
           array (
           ),
@@ -117,7 +117,7 @@ return [
           'version' => '4.0.0.0',
           'reference' => 'f5e568ba02fa5ba0ddd0f618391d5a9ea50b06d7',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../phpunit/php-invoker',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../phpunit/php-invoker',
           'aliases' => 
           array (
           ),
@@ -129,7 +129,7 @@ return [
           'version' => '3.0.1.0',
           'reference' => '0c7b06ff49e3d5072f057eb1fa59258bf287a748',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../phpunit/php-text-template',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../phpunit/php-text-template',
           'aliases' => 
           array (
           ),
@@ -141,7 +141,7 @@ return [
           'version' => '6.0.0.0',
           'reference' => 'e2a2d67966e740530f4a3343fe2e030ffdc1161d',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../phpunit/php-timer',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../phpunit/php-timer',
           'aliases' => 
           array (
           ),
@@ -153,7 +153,7 @@ return [
           'version' => '10.5.52.0',
           'reference' => '5be558244941fba07788b6bb42dc5fc84429580c',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../phpunit/phpunit',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../phpunit/phpunit',
           'aliases' => 
           array (
           ),
@@ -165,7 +165,7 @@ return [
           'version' => '2.0.1.0',
           'reference' => 'c34583b87e7b7a8055bf6c450c2c77ce32a24084',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/cli-parser',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/cli-parser',
           'aliases' => 
           array (
           ),
@@ -177,7 +177,7 @@ return [
           'version' => '2.0.0.0',
           'reference' => 'a81fee9eef0b7a76af11d121767abc44c104e503',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/code-unit',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/code-unit',
           'aliases' => 
           array (
           ),
@@ -189,7 +189,7 @@ return [
           'version' => '3.0.0.0',
           'reference' => '5e3a687f7d8ae33fb362c5c0743794bbb2420a1d',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/code-unit-reverse-lookup',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/code-unit-reverse-lookup',
           'aliases' => 
           array (
           ),
@@ -201,7 +201,7 @@ return [
           'version' => '5.0.3.0',
           'reference' => 'a18251eb0b7a2dcd2f7aa3d6078b18545ef0558e',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/comparator',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/comparator',
           'aliases' => 
           array (
           ),
@@ -213,7 +213,7 @@ return [
           'version' => '3.2.0.0',
           'reference' => '68ff824baeae169ec9f2137158ee529584553799',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/complexity',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/complexity',
           'aliases' => 
           array (
           ),
@@ -225,7 +225,7 @@ return [
           'version' => '5.1.1.0',
           'reference' => 'c41e007b4b62af48218231d6c2275e4c9b975b2e',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/diff',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/diff',
           'aliases' => 
           array (
           ),
@@ -237,7 +237,7 @@ return [
           'version' => '6.1.0.0',
           'reference' => '8074dbcd93529b357029f5cc5058fd3e43666984',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/environment',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/environment',
           'aliases' => 
           array (
           ),
@@ -249,7 +249,7 @@ return [
           'version' => '5.1.2.0',
           'reference' => '955288482d97c19a372d3f31006ab3f37da47adf',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/exporter',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/exporter',
           'aliases' => 
           array (
           ),
@@ -261,7 +261,7 @@ return [
           'version' => '6.0.2.0',
           'reference' => '987bafff24ecc4c9ac418cab1145b96dd6e9cbd9',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/global-state',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/global-state',
           'aliases' => 
           array (
           ),
@@ -273,7 +273,7 @@ return [
           'version' => '2.0.2.0',
           'reference' => '856e7f6a75a84e339195d48c556f23be2ebf75d0',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/lines-of-code',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/lines-of-code',
           'aliases' => 
           array (
           ),
@@ -285,7 +285,7 @@ return [
           'version' => '5.0.0.0',
           'reference' => '202d0e344a580d7f7d04b3fafce6933e59dae906',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/object-enumerator',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/object-enumerator',
           'aliases' => 
           array (
           ),
@@ -297,7 +297,7 @@ return [
           'version' => '3.0.0.0',
           'reference' => '24ed13d98130f0e7122df55d06c5c4942a577957',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/object-reflector',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/object-reflector',
           'aliases' => 
           array (
           ),
@@ -309,7 +309,7 @@ return [
           'version' => '5.0.1.0',
           'reference' => '47e34210757a2f37a97dcd207d032e1b01e64c7a',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/recursion-context',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/recursion-context',
           'aliases' => 
           array (
           ),
@@ -321,7 +321,7 @@ return [
           'version' => '4.0.0.0',
           'reference' => '462699a16464c3944eefc02ebdd77882bd3925bf',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/type',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/type',
           'aliases' => 
           array (
           ),
@@ -333,7 +333,7 @@ return [
           'version' => '4.0.1.0',
           'reference' => 'c51fa83a5d8f43f1402e3f32a005e6262244ef17',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/version',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../sebastian/version',
           'aliases' => 
           array (
           ),
@@ -345,7 +345,7 @@ return [
           'version' => '3.13.2.0',
           'reference' => '5b5e3821314f947dd040c70f7992a64eac89025c',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../squizlabs/php_codesniffer',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../squizlabs/php_codesniffer',
           'aliases' => 
           array (
           ),
@@ -357,7 +357,7 @@ return [
           'version' => '1.2.3.0',
           'reference' => '737eda637ed5e28c3413cb1ebe8bb52cbf1ca7a2',
           'type' => 'library',
-          'install_path' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\composer/../theseer/tokenizer',
+          'install_path' => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\composer/../theseer/tokenizer',
           'aliases' => 
           array (
           ),
@@ -368,10 +368,10 @@ return [
   ),
   'executedFilesHashes' => 
   array (
-    'phar://C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\phpstan\\phpstan\\phpstan.phar\\stubs\\runtime\\Attribute85.php' => '123dcd45f03f2463904087a66bfe2bc139760df0',
-    'phar://C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\phpstan\\phpstan\\phpstan.phar\\stubs\\runtime\\ReflectionAttribute.php' => '0b4b78277eb6545955d2ce5e09bff28f1f8052c8',
-    'phar://C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\phpstan\\phpstan\\phpstan.phar\\stubs\\runtime\\ReflectionIntersectionType.php' => 'a3e6299b87ee5d407dae7651758edfa11a74cb11',
-    'phar://C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\vendor\\phpstan\\phpstan\\phpstan.phar\\stubs\\runtime\\ReflectionUnionType.php' => '1b349aa997a834faeafe05fa21bc31cae22bf2e2',
+    'phar://C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\phpstan\\phpstan\\phpstan.phar\\stubs\\runtime\\Attribute85.php' => '123dcd45f03f2463904087a66bfe2bc139760df0',
+    'phar://C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\phpstan\\phpstan\\phpstan.phar\\stubs\\runtime\\ReflectionAttribute.php' => '0b4b78277eb6545955d2ce5e09bff28f1f8052c8',
+    'phar://C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\phpstan\\phpstan\\phpstan.phar\\stubs\\runtime\\ReflectionIntersectionType.php' => 'a3e6299b87ee5d407dae7651758edfa11a74cb11',
+    'phar://C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\vendor\\phpstan\\phpstan\\phpstan.phar\\stubs\\runtime\\ReflectionUnionType.php' => '1b349aa997a834faeafe05fa21bc31cae22bf2e2',
   ),
   'phpExtensions' => 
   array (
@@ -432,224 +432,6 @@ return [
 	'projectExtensionFiles' => array (
 ),
 	'errorsCallback' => static function (): array { return array (
-  'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\DebugLogger.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method SmartDesk\\Utils\\DebugLogger::log() has parameter $hooks with no value type specified in iterable type array.',
-       'file' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\DebugLogger.php',
-       'line' => 159,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\DebugLogger.php',
-       'traitFilePath' => NULL,
-       'tip' => 'See: https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-iterable-type',
-       'nodeLine' => 159,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.iterableValue',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method SmartDesk\\Utils\\DebugLogger::hook() has parameter $hooks with no value type specified in iterable type array.',
-       'file' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\DebugLogger.php',
-       'line' => 197,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\DebugLogger.php',
-       'traitFilePath' => NULL,
-       'tip' => 'See: https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-iterable-type',
-       'nodeLine' => 197,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.iterableValue',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    2 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Offset \'function\' on array{function: string, line?: int, file?: string, class: class-string, type?: \'->\'|\'::\', args?: array<mixed>, object?: object} on left side of ?? always exists and is not nullable.',
-       'file' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\DebugLogger.php',
-       'line' => 440,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\DebugLogger.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 440,
-       'nodeType' => 'PhpParser\\Node\\Expr\\BinaryOp\\Coalesce',
-       'identifier' => 'nullCoalesce.offset',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    3 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method SmartDesk\\Utils\\DebugLogger::normalizeHooks() has parameter $hooks with no value type specified in iterable type array.',
-       'file' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\DebugLogger.php',
-       'line' => 477,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\DebugLogger.php',
-       'traitFilePath' => NULL,
-       'tip' => 'See: https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-iterable-type',
-       'nodeLine' => 477,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.iterableValue',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    4 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method SmartDesk\\Utils\\DebugLogger::debug() has parameter $hooks with no value type specified in iterable type array.',
-       'file' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\DebugLogger.php',
-       'line' => 833,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\DebugLogger.php',
-       'traitFilePath' => NULL,
-       'tip' => 'See: https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-iterable-type',
-       'nodeLine' => 833,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.iterableValue',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    5 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method SmartDesk\\Utils\\DebugLogger::info() has parameter $hooks with no value type specified in iterable type array.',
-       'file' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\DebugLogger.php',
-       'line' => 852,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\DebugLogger.php',
-       'traitFilePath' => NULL,
-       'tip' => 'See: https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-iterable-type',
-       'nodeLine' => 852,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.iterableValue',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    6 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'PHPDoc tag @param has invalid value (@param array<int,string>|string|null	$hooks	Optional hook preset name(s) or specific hook names to check status for.
-										Can be a preset key (\'load\', \'register\', \'admin\', etc.), comma-separated string,
-										or array of hook names. Defaults to \'register\' preset if null.): Unexpected token "@param", expected type at offset 436 on line 9',
-       'file' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\DebugLogger.php',
-       'line' => 864,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\DebugLogger.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 871,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\ClassMethod',
-       'identifier' => 'phpDoc.parseError',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    7 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Method SmartDesk\\Utils\\DebugLogger::notice() has parameter $hooks with no value type specified in iterable type array.',
-       'file' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\DebugLogger.php',
-       'line' => 871,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\DebugLogger.php',
-       'traitFilePath' => NULL,
-       'tip' => 'See: https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-iterable-type',
-       'nodeLine' => 871,
-       'nodeType' => 'PHPStan\\Node\\InClassMethodNode',
-       'identifier' => 'missingType.iterableValue',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Handlers\\CallbackHandler.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'PHPDoc tag @return with type array<string, mixed> is not subtype of native type callable.',
-       'file' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Handlers\\CallbackHandler.php',
-       'line' => 77,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Handlers\\CallbackHandler.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 77,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\ClassMethod',
-       'identifier' => 'return.phpDocType',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-    1 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'Callable callable(string): void invoked with 3 parameters, 1 required.',
-       'file' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Handlers\\CallbackHandler.php',
-       'line' => 80,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Handlers\\CallbackHandler.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 80,
-       'nodeType' => 'PhpParser\\Node\\Expr\\FuncCall',
-       'identifier' => 'arguments.count',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Handlers\\ErrorLogHandler.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'PHPDoc tag @return with type array<string, mixed> is not subtype of native type callable.',
-       'file' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Handlers\\ErrorLogHandler.php',
-       'line' => 53,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Handlers\\ErrorLogHandler.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 53,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\ClassMethod',
-       'identifier' => 'return.phpDocType',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
-  'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Handlers\\FileHandler.php' => 
-  array (
-    0 => 
-    \PHPStan\Analyser\Error::__set_state(array(
-       'message' => 'PHPDoc tag @return with type array<string, mixed> is not subtype of native type callable.',
-       'file' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Handlers\\FileHandler.php',
-       'line' => 80,
-       'canBeIgnored' => true,
-       'filePath' => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Handlers\\FileHandler.php',
-       'traitFilePath' => NULL,
-       'tip' => NULL,
-       'nodeLine' => 80,
-       'nodeType' => 'PhpParser\\Node\\Stmt\\ClassMethod',
-       'identifier' => 'return.phpDocType',
-       'metadata' => 
-      array (
-      ),
-       'fixedErrorDiff' => NULL,
-    )),
-  ),
 ); },
 	'locallyIgnoredErrorsCallback' => static function (): array { return array (
 ); },
@@ -658,7 +440,7 @@ return [
 	'unmatchedLineIgnores' => array (
 ),
 	'collectedDataCallback' => static function (): array { return array (
-  'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\DebugLogger.php' => 
+  'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\src\\DebugLogger.php' => 
   array (
     'PHPStan\\Rules\\DeadCode\\PossiblyPureStaticCallCollector' => 
     array (
@@ -666,23 +448,23 @@ return [
       array (
         0 => 'SmartDesk\\Utils\\DebugLogger',
         1 => 'emit',
-        2 => 768,
+        2 => 861,
       ),
       1 => 
       array (
         0 => 'SmartDesk\\Utils\\DebugLogger',
         1 => 'log',
-        2 => 797,
+        2 => 897,
       ),
       2 => 
       array (
         0 => 'SmartDesk\\Utils\\DebugLogger',
         1 => 'log',
-        2 => 806,
+        2 => 909,
       ),
     ),
   ),
-  'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Handlers\\CallbackHandler.php' => 
+  'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\src\\Handlers\\CallbackHandler.php' => 
   array (
     'PHPStan\\Rules\\DeadCode\\ConstructorWithoutImpurePointsCollector' => 
     array (
@@ -698,7 +480,7 @@ return [
       ),
     ),
   ),
-  'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Handlers\\ErrorLogHandler.php' => 
+  'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\src\\Handlers\\ErrorLogHandler.php' => 
   array (
     'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => 
     array (
@@ -710,17 +492,23 @@ return [
       ),
     ),
   ),
-  'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Handlers\\FileHandler.php' => 
+  'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\src\\Handlers\\FileHandler.php' => 
   array (
     'PHPStan\\Rules\\DeadCode\\MethodWithoutImpurePointsCollector' => 
     array (
       0 => 
       array (
         0 => 'SmartDesk\\Utils\\Handlers\\FileHandler',
-        1 => 'handler',
+        1 => 'create',
         2 => 'SmartDesk\\Utils\\Handlers\\FileHandler',
       ),
       1 => 
+      array (
+        0 => 'SmartDesk\\Utils\\Handlers\\FileHandler',
+        1 => 'handler',
+        2 => 'SmartDesk\\Utils\\Handlers\\FileHandler',
+      ),
+      2 => 
       array (
         0 => 'SmartDesk\\Utils\\Handlers\\FileHandler',
         1 => 'path',
@@ -730,52 +518,52 @@ return [
   ),
 ); },
 	'dependencies' => array (
-  'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\DebugLogger.php' => 
+  'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\src\\DebugLogger.php' => 
   array (
-    'fileHash' => 'f93e0e810aa02441eb7327596e9848d745085e49',
+    'fileHash' => '07f5cb55461ecfb0904cc9265163f49d8355110a',
     'dependentFiles' => 
     array (
     ),
   ),
-  'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Handlers\\CallbackHandler.php' => 
+  'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\src\\Handlers\\CallbackHandler.php' => 
   array (
-    'fileHash' => 'e09ece75e8e7723e78c655472b42413942e6b79a',
+    'fileHash' => '84e7c567561c5f522fc0eaa906d95863e757ba87',
     'dependentFiles' => 
     array (
     ),
   ),
-  'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Handlers\\ErrorLogHandler.php' => 
+  'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\src\\Handlers\\ErrorLogHandler.php' => 
   array (
-    'fileHash' => '93c3818c0f4fe20248f9afb3895d6ae0c3146302',
+    'fileHash' => 'e1c2dca96338b4a181d9fd1856a0239375f61b11',
     'dependentFiles' => 
     array (
     ),
   ),
-  'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Handlers\\FileHandler.php' => 
+  'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\src\\Handlers\\FileHandler.php' => 
   array (
-    'fileHash' => '71a6fa0c993e4c460c0557d0ad56ac75750b998e',
+    'fileHash' => '22bc24961e46a418f7d84d99b639de30db1cc527',
     'dependentFiles' => 
     array (
     ),
   ),
-  'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Support\\LogLevel.php' => 
+  'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\src\\Support\\LogLevel.php' => 
   array (
-    'fileHash' => '78db1b9eba68a9a6539446007a593a46bc1186fb',
+    'fileHash' => 'c7b8139681867ba144d54027c5791d35844277ea',
     'dependentFiles' => 
     array (
-      0 => 'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\DebugLogger.php',
+      0 => 'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\src\\DebugLogger.php',
     ),
   ),
-  'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Support\\Utilities.php' => 
+  'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\src\\Support\\Utilities.php' => 
   array (
-    'fileHash' => 'e28e0f7fe3c2fb1a46bce0be1e914ec771db1028',
+    'fileHash' => 'f2401334c9346e4c8136fbbc57fdd5f38ef087e2',
     'dependentFiles' => 
     array (
     ),
   ),
 ),
 	'exportedNodesCallback' => static function (): array { return array (
-  'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\DebugLogger.php' => 
+  'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\src\\DebugLogger.php' => 
   array (
     0 => 
     \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
@@ -856,13 +644,20 @@ return [
 	 * and caller details. The output includes formatted data, hook execution status, and metadata
 	 * about the calling function. Only active when WP_DEBUG is enabled.
 	 *
-	 * @param	mixed				$data	The data to log - can be any type (array, object, scalar, etc.)
-	 * @param	string|array		$hooks	Optional hook preset name(s) or specific hook names to check status for.
-	 * 										Can be a preset key (\'load\', \'register\', \'admin\', etc.), comma-separated string,
-	 * 										or array of hook names. Defaults to \'register\' preset if null.
-	 * @param	null|string			$title	Optional title line to display at the top of the log entry
-	 * @param	null|string			$level	Log level using LogLevel constants (DEBUG, INFO, WARNING, etc.). Defaults to INFO.
-	 * 
+	 * The data to log - can be any type (array, object, scalar, etc.)
+	 * @param	mixed							$data
+	 *
+	 * Optional hook preset name(s) or specific hook names to check status for.
+	 * Can be a preset key (\'load\', \'register\', \'admin\', etc.), comma-separated string,
+	 * or array of hook names. Defaults to \'register\' preset if null.
+	 * @param	array<int,string>|string|null	$hooks
+	 *
+	 * Optional title line to display at the top of the log entry
+	 * @param	null|string						$title
+	 *
+	 * Log level using LogLevel constants (DEBUG, INFO, WARNING, etc.). Defaults to INFO.
+	 * @param	null|string						$level
+	 *
 	 * @return	bool				True if the log entry was written successfully, false if WP_DEBUG is disabled
 	 */',
              'namespace' => 'SmartDesk\\Utils',
@@ -944,13 +739,19 @@ return [
 	 * without any additional data. Shows which hooks have been fired and how many times,
 	 * versus hooks that are still pending. Only active when WP_DEBUG is enabled.
 	 *
-	 * @param	null|string|array	$hooks	Optional hook preset name(s) or specific hook names to check status for.
-	 * 										Can be a preset key (\'load\', \'register\', \'admin\', etc.), comma-separated string,
-	 * 										or array of hook names. Defaults to \'register\' preset if null.
-	 * @param	null|string			$title	Optional title line to display at the top of the log entry. Defaults to \'Hooks\'.
-	 * @param	null|string			$level	Log level using LogLevel constants (DEBUG, INFO, WARNING, etc.). Defaults to INFO.
-	 * 
-	 * @return	bool				True if the log entry was written successfully, false if WP_DEBUG is disabled
+	 * Optional hook preset name(s) or specific hook names to check status for.
+	 * Can be a preset key (\'load\', \'register\', \'admin\', etc.), comma-separated string,
+	 * or array of hook names. Defaults to \'register\' preset if null.
+	 * @param	array<int,string>|string|null	$hooks
+	 *
+	 * Optional title line to display at the top of the log entry. Defaults to \'Hooks\'.
+	 * @param	null|string						$title
+	 *
+	 * Log level using LogLevel constants (DEBUG, INFO, WARNING, etc.). Defaults to INFO.
+	 * @param	null|string						$level
+	 *
+	 * True if the log entry was written successfully, false if WP_DEBUG is disabled
+	 * @return	bool
 	 */',
              'namespace' => 'SmartDesk\\Utils',
              'uses' => 
@@ -1021,14 +822,22 @@ return [
 	 * renaming them with numeric suffixes (.1, .2, etc.) and starts a fresh main log file.
 	 * The directory is created automatically if it doesn\'t exist.
 	 *
-	 * @param	string	$dir		The directory path where log files will be stored. Will be created if it doesn\'t exist.
-	 * @param	string	$file		The base filename for the log file. Defaults to \'debug.log\'.
-	 * @param	int		$maxBytes	Maximum file size in bytes before rotation occurs. Defaults to 2,000,000 bytes (2MB).
-	 * @param	int		$maxFiles	Maximum number of rotated files to keep. Older files beyond this limit are deleted.
-	 * 								Defaults to 4 files.
-	 * 
-	 * @return	callable(string):void	A callable that accepts a log message string and writes it to the rotating log file.
-	 * 									The callable handles all rotation logic internally and returns void.
+	 * The directory path where log files will be stored. Will be created if it doesn\'t exist.
+	 * @param	string	$dir
+	 *
+	 * The base filename for the log file. Defaults to \'debug.log\'.
+	 * @param	string	$file
+	 *
+	 * Maximum file size in bytes before rotation occurs. Defaults to 2,000,000 bytes (2MB).
+	 * @param	int		$maxBytes
+	 *
+	 * Maximum number of rotated files to keep. Older files beyond this limit are deleted.
+	 * Defaults to 4 files.
+	 * @param	int		$maxFiles
+	 *
+	 * A callable that accepts a log message string and writes it to the rotating log file.
+	 * The callable handles all rotation logic internally and returns void.
+	 * @return	callable(string):void
 	 */',
              'namespace' => 'SmartDesk\\Utils',
              'uses' => 
@@ -1113,7 +922,7 @@ return [
 	 * 											containing the complete formatted log message and
 	 * 											handles writing it to the desired destination.
 	 * 											The callable should not return any value.
-	 * 
+	 *
 	 * @return	void
 	 */',
              'namespace' => 'SmartDesk\\Utils',
@@ -1170,7 +979,7 @@ return [
 	 * 							The level hierarchy from lowest to highest is: DEBUG, INFO, NOTICE,
 	 * 							WARNING, ERROR, CRITICAL, ALERT, EMERGENCY. Setting a higher level
 	 * 							will filter out lower-priority messages.
-	 * 
+	 *
 	 * @return	void			No return value. The minimum level threshold is stored internally
 	 * 							and applied to all subsequent log operations until changed or reset.
 	 */',
@@ -1226,7 +1035,7 @@ return [
 	 * 							timer when calling timerStop(). If a timer with the same ID
 	 * 							already exists, it will be overwritten with a new start time.
 	 * 							Should be a descriptive name like \'database_query\' or \'api_call\'.
-	 * 
+	 *
 	 * @return	void			No return value. The timer is stored internally and can be
 	 * 							stopped later using timerStop() with the same ID.
 	 */',
@@ -1287,7 +1096,7 @@ return [
 	 * @param	null|string		$level	Optional log level using LogLevel constants (DEBUG, INFO, WARNING, etc.).
 	 * 									Defaults to LogLevel::DEBUG. Determines the priority level
 	 * 									of the lap time log entry for filtering purposes.
-	 * 
+	 *
 	 * @return	void					No return value. The lap duration is logged to the configured
 	 * 									output sink and the timer continues running for future laps or stop.
 	 */',
@@ -1370,7 +1179,7 @@ return [
 	 * @param	null|string		$level	Optional log level using LogLevel constants (DEBUG, INFO, WARNING, etc.).
 	 * 									Defaults to LogLevel::INFO for successful timer stops.
 	 * 									Warning messages for missing timers always use WARNING level.
-	 * 
+	 *
 	 * @return	void					No return value. The timer duration is logged to the configured
 	 * 									output sink and the timer is removed from internal storage.
 	 */',
@@ -1442,13 +1251,19 @@ return [
 	 * hook status information at DEBUG level. Equivalent to calling log() with LogLevel::DEBUG.
 	 * Only active when WP_DEBUG is enabled, otherwise the call is silently ignored.
 	 *
-	 * @param	mixed				$data	The data to log - can be any type (array, object, scalar, etc.)
-	 * @param	null|string|array	$hooks	Optional hook preset name(s) or specific hook names to check status for.
-	 * 										Can be a preset key (\'load\', \'register\', \'admin\', etc.), comma-separated string,
-	 * 										or array of hook names. Defaults to \'register\' preset if null.
-	 * @param	null|string			$title	Optional title line to display at the top of the log entry
-	 * 
-	 * @return	bool				True if the log entry was written successfully, false if WP_DEBUG is disabled
+	 * The data to log - can be any type (array, object, scalar, etc.)
+	 * @param	mixed				$data
+	 *
+	 * Optional hook preset name(s) or specific hook names to check status for.
+	 * Can be a preset key (\'load\', \'register\', \'admin\', etc.), comma-separated string,
+	 * or array of hook names. Defaults to \'register\' preset if null.
+	 * @param	array<int,string>|string|null	$hooks
+	 *
+	 * Optional title line to display at the top of the log entry
+	 * @param	null|string						$title
+	 *
+	 * True if the log entry was written successfully, false if WP_DEBUG is disabled
+	 * @return	bool
 	 */',
              'namespace' => 'SmartDesk\\Utils',
              'uses' => 
@@ -1518,13 +1333,18 @@ return [
 	 * hook status information at INFO level. Equivalent to calling log() with LogLevel::INFO.
 	 * Only active when WP_DEBUG is enabled, otherwise the call is silently ignored.
 	 *
-	 * @param	mixed				$data	The data to log - can be any type (array, object, scalar, etc.)
-	 * @param	null|string|array	$hooks	Optional hook preset name(s) or specific hook names to check status for.
-	 * 										Can be a preset key (\'load\', \'register\', \'admin\', etc.), comma-separated string,
-	 * 										or array of hook names. Defaults to \'register\' preset if null.
-	 * @param	null|string			$title	Optional title line to display at the top of the log entry
-	 * 
-	 * @return	bool				True if the log entry was written successfully, false if WP_DEBUG is disabled
+	 * The data to log - can be any type (array, object, scalar, etc.)
+	 * @param	mixed							$data
+	 *
+	 * Optional hook preset name(s) or specific hook names to check status for.
+	 * Can be a preset key (\'load\', \'register\', \'admin\', etc.), comma-separated string,
+	 * or array of hook names. Defaults to \'register\' preset if null.
+	 * @param	array<int,string>|string|null	$hooks
+	 *
+	 * Optional title line to display at the top of the log entry
+	 * @param	null|string						$title
+	 *
+	 * @return	bool	True if the log entry was written successfully, false if WP_DEBUG is disabled
 	 */',
              'namespace' => 'SmartDesk\\Utils',
              'uses' => 
@@ -1594,13 +1414,18 @@ return [
 	 * hook status information at NOTICE level. Equivalent to calling log() with LogLevel::NOTICE.
 	 * Only active when WP_DEBUG is enabled, otherwise the call is silently ignored.
 	 *
-	 * @param	mixed				$data	The data to log - can be any type (array, object, scalar, etc.)
-	 * @param	@param array<int,string>|string|null	$hooks	Optional hook preset name(s) or specific hook names to check status for.
-	 * 										Can be a preset key (\'load\', \'register\', \'admin\', etc.), comma-separated string,
-	 * 										or array of hook names. Defaults to \'register\' preset if null.
-	 * @param	null|string			$title	Optional title line to display at the top of the log entry
-	 * 
-	 * @return	bool				True if the log entry was written successfully, false if WP_DEBUG is disabled
+	 * The data to log - can be any type (array, object, scalar, etc.)
+	 * @param	mixed							$data
+	 *
+	 * Optional hook preset name(s) or specific hook names to check status for.
+	 * Can be a preset key (\'load\', \'register\', \'admin\', etc.), comma-separated string,
+	 * or array of hook names. Defaults to \'register\' preset if null.
+	 * @param	array<int,string>|string|null	$hooks
+	 *
+	 * Optional title line to display at the top of the log entry
+	 * @param	null|string						$title
+	 *
+	 * @return	bool	True if the log entry was written successfully, false if WP_DEBUG is disabled
 	 */',
              'namespace' => 'SmartDesk\\Utils',
              'uses' => 
@@ -1663,7 +1488,26 @@ return [
            'name' => 'warning',
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
-             'phpDocString' => '/** @param array<int,string>|string|null $hooks */',
+             'phpDocString' => '/**
+	 * Log warning data with WARNING level priority.
+	 *
+	 * Convenience method that logs warning data with human-friendly formatting and optional
+	 * hook status information at WARNING level. Equivalent to calling log() with LogLevel::WARNING.
+	 * Only active when WP_DEBUG is enabled, otherwise the call is silently ignored.
+	 *
+	 * The data to log - can be any type (array, object, scalar, etc.)
+	 * @param	mixed							$data
+	 *
+	 * Optional hook preset name(s) or specific hook names to check status for.
+	 * Can be a preset key (\'load\', \'register\', \'admin\', etc.), comma-separated string,
+	 * or array of hook names. Defaults to \'register\' preset if null.
+	 * @param	array<int,string>|string|null	$hooks
+	 *
+	 * Optional title line to display at the top of the log entry
+	 * @param	null|string						$title
+	 *
+	 * @return	bool	True if the log entry was written successfully, false if WP_DEBUG is disabled
+	 */',
              'namespace' => 'SmartDesk\\Utils',
              'uses' => 
             array (
@@ -1725,7 +1569,26 @@ return [
            'name' => 'alert',
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
-             'phpDocString' => '/** @param array<int,string>|string|null $hooks */',
+             'phpDocString' => '/**
+	 * Log alert data with ALERT level priority.
+	 *
+	 * Convenience method that logs alert data with human-friendly formatting and optional
+	 * hook status information at ALERT level. Equivalent to calling log() with LogLevel::ALERT.
+	 * Only active when WP_DEBUG is enabled, otherwise the call is silently ignored.
+	 *
+	 * The data to log - can be any type (array, object, scalar, etc.)
+	 * @param	mixed							$data
+	 *
+	 * Optional hook preset name(s) or specific hook names to check status for.
+	 * Can be a preset key (\'load\', \'register\', \'admin\', etc.), comma-separated string,
+	 * or array of hook names. Defaults to \'register\' preset if null.
+	 * @param	array<int,string>|string|null	$hooks
+	 *
+	 * Optional title line to display at the top of the log entry
+	 * @param	null|string						$title
+	 *
+	 * @return	bool	True if the log entry was written successfully, false if WP_DEBUG is disabled
+	 */',
              'namespace' => 'SmartDesk\\Utils',
              'uses' => 
             array (
@@ -1787,7 +1650,26 @@ return [
            'name' => 'emergency',
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
-             'phpDocString' => '/** @param array<int,string>|string|null $hooks */',
+             'phpDocString' => '/**
+	 * Log emergency data with EMERGENCY level priority.
+	 *
+	 * Convenience method that logs emergency data with human-friendly formatting and optional
+	 * hook status information at EMERGENCY level. Equivalent to calling log() with LogLevel::EMERGENCY.
+	 * Only active when WP_DEBUG is enabled, otherwise the call is silently ignored.
+	 *
+	 * The data to log - can be any type (array, object, scalar, etc.)
+	 * @param	mixed							$data
+	 *
+	 * Optional hook preset name(s) or specific hook names to check status for.
+	 * Can be a preset key (\'load\', \'register\', \'admin\', etc.), comma-separated string,
+	 * or array of hook names. Defaults to \'register\' preset if null.
+	 * @param	array<int,string>|string|null	$hooks
+	 *
+	 * Optional title line to display at the top of the log entry
+	 * @param	null|string						$title
+	 *
+	 * @return	bool	True if the log entry was written successfully, false if WP_DEBUG is disabled
+	 */',
              'namespace' => 'SmartDesk\\Utils',
              'uses' => 
             array (
@@ -1849,7 +1731,26 @@ return [
            'name' => 'error',
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
-             'phpDocString' => '/** @param array<int,string>|string|null $hooks */',
+             'phpDocString' => '/**
+	 * Log error data with ERROR level priority.
+	 *
+	 * Convenience method that logs error data with human-friendly formatting and optional
+	 * hook status information at ERROR level. Equivalent to calling log() with LogLevel::ERROR.
+	 * Only active when WP_DEBUG is enabled, otherwise the call is silently ignored.
+	 *
+	 * The data to log - can be any type (array, object, scalar, etc.)
+	 * @param	mixed							$data
+	 *
+	 * Optional hook preset name(s) or specific hook names to check status for.
+	 * Can be a preset key (\'load\', \'register\', \'admin\', etc.), comma-separated string,
+	 * or array of hook names. Defaults to \'register\' preset if null.
+	 * @param	array<int,string>|string|null	$hooks
+	 *
+	 * Optional title line to display at the top of the log entry
+	 * @param	null|string						$title
+	 *
+	 * @return	bool	True if the log entry was written successfully, false if WP_DEBUG is disabled
+	 */',
              'namespace' => 'SmartDesk\\Utils',
              'uses' => 
             array (
@@ -1911,7 +1812,26 @@ return [
            'name' => 'critical',
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
-             'phpDocString' => '/** @param array<int,string>|string|null $hooks */',
+             'phpDocString' => '/**
+	 * Log critical data with CRITICAL level priority.
+	 *
+	 * Convenience method that logs critical data with human-friendly formatting and optional
+	 * hook status information at CRITICAL level. Equivalent to calling log() with LogLevel::CRITICAL.
+	 * Only active when WP_DEBUG is enabled, otherwise the call is silently ignored.
+	 *
+	 * The data to log - can be any type (array, object, scalar, etc.)
+	 * @param	mixed							$data
+	 *
+	 * Optional hook preset name(s) or specific hook names to check status for.
+	 * Can be a preset key (\'load\', \'register\', \'admin\', etc.), comma-separated string,
+	 * or array of hook names. Defaults to \'register\' preset if null.
+	 * @param	array<int,string>|string|null	$hooks
+	 *
+	 * Optional title line to display at the top of the log entry
+	 * @param	null|string						$title
+	 *
+	 * @return	bool	True if the log entry was written successfully, false if WP_DEBUG is disabled
+	 */',
              'namespace' => 'SmartDesk\\Utils',
              'uses' => 
             array (
@@ -1974,7 +1894,7 @@ return [
       ),
     )),
   ),
-  'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Handlers\\CallbackHandler.php' => 
+  'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\src\\Handlers\\CallbackHandler.php' => 
   array (
     0 => 
     \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
@@ -1983,12 +1903,12 @@ return [
       \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
          'phpDocString' => '/**
  * Simple callback wrapper to unify signature.
- * 
+ *
  * This class provides a standardized wrapper around user-defined callback functions
  * to ensure they conform to the logging framework\'s expected signature. It acts as
  * an adapter that allows arbitrary callable functions to be integrated seamlessly
  * into the logging system while maintaining consistent parameter handling.
- * 
+ *
  * The CallbackHandler is designed for symmetry with other handlers in the framework,
  * even though it\'s not directly used by DebugLogger. It enables developers to
  * create custom logging handlers using simple callback functions without needing
@@ -2021,7 +1941,21 @@ return [
            'name' => '__construct',
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
-             'phpDocString' => '/** @param callable(string):void $callback */',
+             'phpDocString' => '/**
+	 * Initializes the CallbackHandler with a user-provided callback function.
+	 *
+	 * The constructor accepts a callable that must conform to the logging signature,
+	 * taking a log level, message line, and payload array as parameters. This callback
+	 * will be stored and later executed through the handler() method.
+	 *
+	 * The callback function to be wrapped.
+	 * Must accept three parameters:
+	 * 		- string $level: The log level (e.g., \'info\', \'error\')
+	 * 		- string $line: The log message or line content
+	 * 		- array $payload: Additional data or context for the log entry
+	 * @param callable(string,string,array<string,mixed>):void  $callback
+	 *
+	 */',
              'namespace' => 'SmartDesk\\Utils\\Handlers',
              'uses' => 
             array (
@@ -2060,7 +1994,16 @@ return [
            'name' => 'handler',
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
-             'phpDocString' => '/** @return array<string,mixed> */',
+             'phpDocString' => '/**
+	 * Returns a callable wrapper that executes the stored callback with logging parameters.
+	 *
+	 * This method provides a standardized callable interface that can be used by logging
+	 * systems. The returned function maintains the same signature as other handlers in
+	 * the logging framework while delegating execution to the user-provided callback.
+	 *
+	 * @return callable(string,string,array<string,mixed>):void	A callable that accepts logging parameters
+	 * 															and forwards them to the stored callback
+	 */',
              'namespace' => 'SmartDesk\\Utils\\Handlers',
              'uses' => 
             array (
@@ -2089,7 +2032,7 @@ return [
       ),
     )),
   ),
-  'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Handlers\\ErrorLogHandler.php' => 
+  'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\src\\Handlers\\ErrorLogHandler.php' => 
   array (
     0 => 
     \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
@@ -2098,7 +2041,7 @@ return [
       \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
          'phpDocString' => '/**
  * Handles logging messages to PHP\'s built-in error log.
- * 
+ *
  * This class provides a simple handler for logging messages using PHP\'s error_log() function.
  * It implements a factory pattern that returns a callable handler function which can be used
  * by logging systems to write log entries to the system error log.
@@ -2130,7 +2073,20 @@ return [
            'name' => 'handler',
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
-             'phpDocString' => '/** @return array<string,mixed> */',
+             'phpDocString' => '/**
+	 * Returns a callable handler function that logs messages to PHP\'s error log.
+	 *
+	 * This method creates and returns a closure that can be used as a logging handler.
+	 * The returned function accepts logging parameters and writes the formatted log
+	 * line to PHP\'s error log using the built-in error_log() function.
+	 *
+	 * A callable that accepts three parameters:
+	 * 		- string $level:	The log level (e.g., \'error\', \'warning\', \'info\')
+	 * 		- string $line:		The formatted log message to be written
+	 * 		- array $payload:	Additional context data (unused in this implementation)
+	 * Returns void after logging the message
+	 * @return callable(string,string,array<string,mixed>):void
+	 */',
              'namespace' => 'SmartDesk\\Utils\\Handlers',
              'uses' => 
             array (
@@ -2159,7 +2115,7 @@ return [
       ),
     )),
   ),
-  'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Handlers\\FileHandler.php' => 
+  'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\src\\Handlers\\FileHandler.php' => 
   array (
     0 => 
     \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
@@ -2168,13 +2124,13 @@ return [
       \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
          'phpDocString' => '/**
  * Minimal file writer with size-based rotation.
- * 
+ *
  * This class provides a file-based logging handler that automatically manages
  * log file rotation based on file size limits. It creates a callable handler
  * that can be used to write log entries to files while maintaining a specified
  * number of rotated backup files. The handler ensures directory creation,
  * manages file size limits, and performs automatic cleanup of old log files.
- * 
+ *
  * The rotation mechanism works by renaming existing files with numeric suffixes
  * (e.g., debug.log becomes debug.log.1, debug.log.1 becomes debug.log.2, etc.)
  * when the current log file exceeds the maximum size threshold. Files beyond
@@ -2210,10 +2166,17 @@ return [
              'phpDocString' => '/**
 	 * Initializes a new FileHandler instance with directory and rotation settings.
 	 *
-	 * @param	string		$dir		The directory path where log files will be stored. Trailing directory separators will be removed.
-	 * @param	string		$filename	The name of the log file. Defaults to \'debug.log\'.
-	 * @param	int			$maxBytes	The maximum file size in bytes before rotation occurs. Defaults to 2,000,000 bytes (2MB).
-	 * @param	int			$maxFiles	The maximum number of rotated files to keep. Defaults to 4 files.
+	 * The directory path where log files will be stored. Trailing directory separators will be removed.
+	 * @param	string		$dir
+	 *
+	 * The name of the log file. Defaults to \'debug.log\'.
+	 * @param	string		$filename
+	 *
+	 * The maximum file size in bytes before rotation occurs. Defaults to 2,000,000 bytes (2MB).
+	 * @param	int			$maxBytes
+	 *
+	 * The maximum number of rotated files to keep. Defaults to 4 files.
+	 * @param	int			$maxFiles
 	 */',
              'namespace' => 'SmartDesk\\Utils\\Handlers',
              'uses' => 
@@ -2286,7 +2249,20 @@ return [
            'name' => 'handler',
            'phpDoc' => 
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
-             'phpDocString' => '/** @return array<string,mixed> */',
+             'phpDocString' => '/**
+	 * Returns a callable handler function for writing log entries to a file with automatic rotation.
+	 *
+	 * The returned callable accepts log level, formatted log line, and payload data,
+	 * then writes the log line to the configured file. The handler automatically
+	 * ensures the target directory exists, rotates files when size limits are exceeded,
+	 * and safely handles file operations.
+	 *
+	 * A callable that accepts three parameters:
+	 * 		- string	$level:		The log level (e.g., \'info\', \'error\', \'debug\')
+	 * 		- string	$line:		The formatted log message ready for writing
+	 * 		- array		$payload:	Additional context data (not used in file writing)
+	 * @return callable(string,string,array<string,mixed>):void
+	 */',
              'namespace' => 'SmartDesk\\Utils\\Handlers',
              'uses' => 
             array (
@@ -2309,13 +2285,58 @@ return [
           array (
           ),
         )),
+        2 => 
+        \PHPStan\Dependency\ExportedNode\ExportedMethodNode::__set_state(array(
+           'name' => 'create',
+           'phpDoc' => 
+          \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
+             'phpDocString' => '/**
+	 * Create a file handler configuration.
+	 *
+	 * @param	string	$filepath	The file path to write log messages to
+	 *
+	 * @return	callable(string): void	The configured file handler
+	 */',
+             'namespace' => 'SmartDesk\\Utils\\Handlers',
+             'uses' => 
+            array (
+            ),
+             'constUses' => 
+            array (
+            ),
+          )),
+           'byRef' => false,
+           'public' => true,
+           'private' => false,
+           'abstract' => false,
+           'final' => false,
+           'static' => true,
+           'returnType' => 'callable',
+           'parameters' => 
+          array (
+            0 => 
+            \PHPStan\Dependency\ExportedNode\ExportedParameterNode::__set_state(array(
+               'name' => 'filepath',
+               'type' => 'string',
+               'byRef' => false,
+               'variadic' => false,
+               'hasDefault' => false,
+               'attributes' => 
+              array (
+              ),
+            )),
+          ),
+           'attributes' => 
+          array (
+          ),
+        )),
       ),
        'attributes' => 
       array (
       ),
     )),
   ),
-  'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Support\\LogLevel.php' => 
+  'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\src\\Support\\LogLevel.php' => 
   array (
     0 => 
     \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
@@ -2324,11 +2345,11 @@ return [
       \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
          'phpDocString' => '/**
  * Defines log levels with emoji indicators and hierarchical ordering.
- * 
+ *
  * This class provides a standardized set of log levels for debugging and monitoring
  * purposes. Each level includes an emoji indicator for visual identification and
  * maintains a numerical order from lowest (DEBUG) to highest (CRITICAL) severity.
- * 
+ *
  * The ordering system allows for level comparison and filtering, where higher
  * numbers indicate more severe log conditions that typically require immediate
  * attention.
@@ -2533,7 +2554,7 @@ return [
       ),
     )),
   ),
-  'C:\\Users\\MKR\\Documents\\My Web Sites\\rys\\app\\public\\wp-content\\plugins\\SmartDesk-DebugLogger\\src\\Support\\Utilities.php' => 
+  'C:\\Users\\MKR.DESKTOP-001\\Documents\\My Web Sites\\SmartDesk-DebugLogger\\src\\Support\\Utilities.php' => 
   array (
     0 => 
     \PHPStan\Dependency\ExportedNode\ExportedClassNode::__set_state(array(
@@ -2572,12 +2593,12 @@ return [
           \PHPStan\Dependency\ExportedNode\ExportedPhpDocNode::__set_state(array(
              'phpDocString' => '/**
 	 * Gets the current UTC time formatted as HH:MM:SS,microseconds.
-	 * 
+	 *
 	 * This method creates a DateTime object in UTC timezone and formats it
 	 * to include hours, minutes, seconds, and the first 5 digits of microseconds
 	 * separated by a comma. This format is commonly used for precise logging
 	 * and debugging purposes.
-	 * 
+	 *
 	 * @return string The current UTC time in format "HH:MM:SS,MMMMM" where
 	 *                HH is hours (00-23), MM is minutes (00-59), SS is seconds (00-59),
 	 *                and MMMMM is the first 5 digits of microseconds (00000-99999)
