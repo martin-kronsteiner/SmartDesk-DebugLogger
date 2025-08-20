@@ -20,8 +20,8 @@ SmartDesk-DebugLogger/
 │    ├── bootstrap.php
 │    ├── DebugLoggerTest.php
 │    ├── HandlersAndUtilitiesTest.php
-│    └──MinLevelTest.php
-││
+│    └── MinLevelTest.php
+│
 ├── vendor/
 ├── .gitattributes
 ├── .phpunit.result.cache
