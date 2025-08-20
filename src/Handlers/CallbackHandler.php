@@ -42,7 +42,7 @@ namespace SmartDesk\Utils\Handlers;
  */
 final class CallbackHandler {
 
-	/** @var callable(string,string,array):void */
+	/** @var callable(string):void */
 	private $callback;
 
 	/**
@@ -58,6 +58,7 @@ final class CallbackHandler {
 	 * 															- string $line: The log message or line content
 	 * 															- array $payload: Additional data or context for the log entry
 	 */
+	/** @param callable(string):void $callback */
 	public function __construct(callable $callback) {
 		$this->callback = $callback;
 	}
@@ -72,6 +73,7 @@ final class CallbackHandler {
 	 * @return callable(string,string,array):void	A callable that accepts logging parameters
 	 * 												and forwards them to the stored callback
 	 */
+	/** @return array<string,mixed> */
 	public function handler(): callable	{
 		$cb = $this->callback;
 		return static function (string $level, string $line, array $payload) use ($cb): void {

@@ -25,7 +25,10 @@ SmartDesk-DebugLogger/
 │    ├── HandlersAndUtilitiesTest.php
 │    └── MinLevelTest.php
 │
+├── var/
+|
 ├── vendor/
+|
 ├── .gitattributes
 ├── .phpunit.result.cache
 ├── composer.json

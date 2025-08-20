@@ -76,6 +76,7 @@ final class FileHandler {
 	 * 													- string	$line:		The formatted log message ready for writing
 	 * 													- array		$payload:	Additional context data (not used in file writing)
 	 */
+	/** @return array<string,mixed> */
 	public function handler(): callable	{
 		$self = $this;
 		return static function (string $level, string $line, array $payload) use ($self): void {

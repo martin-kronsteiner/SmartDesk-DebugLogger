@@ -49,6 +49,7 @@ final class ErrorLogHandler {
 	 * 													- array $payload:	Additional context data (unused in this implementation)
 	 * 												Returns void after logging the message
 	 */
+	/** @return array<string,mixed> */
 	public function handler(): callable	{
 		return static function (string $level, string $line, array $payload): void {
 			error_log($line);
