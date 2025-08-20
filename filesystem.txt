@@ -1,0 +1,23 @@
+SmartDesk-DebugLogger/
+│
+├── src/
+│    ├── Handlers/
+│    │    ├── CallbackHandler.php
+│    │    ├── ErrorLogHandler.php
+│    │    └── FileHandler.php
+|    |
+│    ├── Support/
+│    |    ├── LogLevel.php
+│    |    └── Utilities.php
+|    |
+│    └── DebugLogger.php
+│
+├── tests/
+│    ├── bootstrap.php
+│    └── DebugLoggerTest.php
+│
+├── composer.json
+├── filesystem.txt
+├── LICENSE
+├── phpunit.xml
+└── README.md
