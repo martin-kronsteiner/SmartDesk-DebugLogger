@@ -1,12 +1,19 @@
 name: CI
 
 on:
-  push:
   pull_request:
+  push:
+    branches: [ main, master ]
 
 jobs:
-  test:
+  qa:
+    name: QA (PHP ${{ matrix.php }})
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['8.1', '8.2', '8.3', '8.4']
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -14,19 +21,23 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: ${{ matrix.php }}
           coverage: none
           tools: composer:v2
 
-      - name: Validate composer.json
+      - name: Install deps (cached)
+        uses: ramsey/composer-install@v3
+        with:
+          composer-options: --no-interaction --prefer-dist --no-progress
+
+      - name: Composer validate
         run: composer validate --no-check-publish --strict
 
-      - name: Install dependencies
-        run: composer install --no-interaction --no-progress --prefer-dist
+      - name: PHPStan
+        run: vendor/bin/phpstan analyse --no-progress
 
-      # (Optional) Nur nötig, falls du manuell lock-Änderungen automatisieren willst
-      # - name: Ensure phpunit is executable (not required when using "php …")
-      #   run: chmod +x vendor/bin/phpunit
+      - name: PHPCS
+        run: vendor/bin/phpcs
 
-      - name: Run tests
-        run: php vendor/bin/phpunit --colors=always
+      - name: PHPUnit
+        run: vendor/bin/phpunit --colors=always

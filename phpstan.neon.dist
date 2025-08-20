@@ -1,0 +1,7 @@
+parameters:
+  level: max
+  paths:
+    - src
+  tmpDir: .build/phpstan
+  checkGenericClassInNonGenericObjectType: false
+  checkMissingCallableSignature: false

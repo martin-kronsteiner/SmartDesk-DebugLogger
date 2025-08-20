@@ -1,6 +1,9 @@
 SmartDesk-DebugLogger/
 ├── .github/
-│    └── workflows/
+│    ├── hooks/
+│    |    └── pre-commit
+|    |
+│    └── workflows/pre-commit
 │         ├── release.yml
 |         └──ci.yml
 │
@@ -28,5 +31,7 @@ SmartDesk-DebugLogger/
 ├── composer.json
 ├── filesystem.txt
 ├── LICENSE
+├── phpcs.xml.dist
+├── phpstan.neon.dist
 ├── phpunit.xml
 └── README.md
