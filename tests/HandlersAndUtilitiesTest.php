@@ -1,4 +1,5 @@
 <?php
+// SPDX-License-Identifier: GPL-3.0-or-later
 declare(strict_types=1);
 
 namespace SmartDesk\Utils\Tests;
@@ -49,8 +50,11 @@ final class HandlersAndUtilitiesTest extends TestCase
 		$this->assertFileExists($dir . '/f.log');
 		$this->assertStringContainsString('short line', (string) file_get_contents($dir . '/f.log'));
 
-		// exceed 60 bytes
+		// exceed 60 bytes now (but rotation occurs on next call)
 		$h('ℹ️ INFO', str_repeat('Z', 200), []);
+		// This call triggers rotation (check happens before writing)
+		$h('ℹ️ INFO', 'trigger rotation', []);
+
 		$this->assertFileExists($dir . '/f.log');
 		$this->assertFileExists($dir . '/f.log.1'); // rotation produced a backup
 	}

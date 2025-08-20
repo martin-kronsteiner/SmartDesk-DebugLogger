@@ -1,4 +1,5 @@
 <?php
+// SPDX-License-Identifier: GPL-3.0-or-later
 declare(strict_types=1);
 
 namespace SmartDesk\Utils\Tests;
@@ -51,10 +52,11 @@ final class DebugLoggerTest extends TestCase
 		DebugLogger::log('hooks only', ['init', 'plugins_loaded'], 'Hooks test', LogLevel::DEBUG);
 
 		$entry = $this->lastEntry();
-
-		$this->assertStringContainsString("\thooks:\n", $entry);
-		$this->assertStringContainsString("⏳ init", $entry);
-		$this->assertStringContainsString("⏳ plugins_loaded", $entry);
+		// normalize Windows line endings for assertions
+		$norm = preg_replace("/\r\n?/", "\n", $entry);
+		$this->assertStringContainsString("\thooks:\n", $norm);
+		$this->assertStringContainsString("⏳ init", $norm);
+		$this->assertStringContainsString("⏳ plugins_loaded", $norm);
 	}
 
 	public function testLevelShortcutsWork(): void
@@ -98,9 +100,10 @@ final class DebugLoggerTest extends TestCase
 		$writer("first line\n");
 		$this->assertFileExists($dir . '/test.log');
 
-		// Force size >80 bytes to trigger rotation
-		$big = str_repeat('X', 200) . "\n";
-		$writer($big);
+		// Make the file exceed 80 bytes (but rotation occurs only on next call)
+		$writer(str_repeat('X', 200) . "\n");
+		// Next write triggers rotation (rotation check happens before writing)
+		$writer("trigger rotation\n");
 
 		// After rotation, current file exists and .1 likely exists
 		$this->assertFileExists($dir . '/test.log');

@@ -1,4 +1,6 @@
+
 # SmartDesk DebugLogger
+![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
 [EN] Human-readable debug logger for WordPress development (PHP 8.1+).
 Generates structured multi-line entries with SmartDesk caller info, an optional hook status block (♻️/⏳), and a level prefix (emoji + label).
 Output goes to a sink: error_log() by default, optionally a rotating file via setWriter().
@@ -18,18 +20,12 @@ composer require smartdesk/debug-logger
 ```php
 use SmartDesk\Utils\DebugLogger;
 
-/**
- * This action hook sets up the debug logger only when WP_DEBUG is enabled.
- */
 add_action('plugins_loaded', function () {
-	// Return early if WP_DEBUG is not defined or false
 	if (!defined('WP_DEBUG') || WP_DEBUG !== true) return;
 
-	// Setup log file location
 	$dir = WP_CONTENT_DIR . '/uploads/smartdesk-logs';
 	DebugLogger::setWriter(DebugLogger::makeRotatingWriter($dir, 'dev.log', 2_000_000, 4));
 
-	// Optional: request marker for header
 	if (!defined('SMARTDESK_REQ')) {
 		define(
 			'SMARTDESK_REQ',
@@ -57,7 +53,7 @@ $debug && DebugLogger::log(
 );
 ```
 
-### Log with Emoji‑Levels
+### Log Levels / Shortcuts
 Available:
 🐞 DEBUG, ℹ️ INFO, 📋 NOTICE, ⚠️ WARNING, 🚨 ALERT, ⛔ EMERGENCY, ❌ ERROR, ☠️ CRITICAL
 
@@ -65,19 +61,7 @@ Available:
 use SmartDesk\Utils\DebugLogger;
 use SmartDesk\Utils\Support\LogLevel;
 
-$debug = 1 === 1;
-
-$debug && DebugLogger::log(
-	['🧪 foo' => 'bar', '🧪 list' => ['a','b','c']],
-	'register',
-	'My Block',
-	LogLevel::ERROR   // level prefix in header
-);
-```
-
-Or use Shortcut
-```php
-use SmartDesk\Utils\DebugLogger;
+DebugLogger::log(['x' => 1], 'register', 'My Block', LogLevel::ERROR);
 
 DebugLogger::warning('something odd happened', 'frontend');
 DebugLogger::debug(['vars' => $_GET], ['request','enqueue'], 'Request vars');
@@ -95,12 +79,10 @@ DebugLogger::hook(['admin', 'enqueue'], 'Hooks');
 use SmartDesk\Utils\DebugLogger;
 use SmartDesk\Utils\Support\LogLevel;
 
-// comments: English; tabs used for indent
 DebugLogger::timerStart('import');
-
-doImportStuff();
-
+// ... work ...
 DebugLogger::timerStop('import', 'Import job', LogLevel::NOTICE);
+
 ```
 Output
 ```
@@ -121,8 +103,8 @@ C:\path\to\Importer\Runner.php:88
  * Plugin Name: SmartDesk Core
  */
 
-use SmartDesk\Debug\DebugLogger;
-use SmartDesk\Debug\Support\LogLevel;
+use SmartDesk\Utils\DebugLogger;
+use SmartDesk\Utils\Support\LogLevel;
 
 // Composer Autoload sicherstellen (root composer oder plugin vendor)
 require_once __DIR__ . '/vendor/autoload.php';
@@ -154,3 +136,15 @@ composer test
 Active only if WP_DEBUG === true.
 Timestamps in UTC.
 Single sink: default error_log(), or rotating file via setWriter().
+
+## License
+GPL-3.0-or-later. See [LICENSE](./LICENSE).
+
+### Plugin-Header (if loaded as plugin)
+```php
+/*
+Plugin Name: SmartDesk DebugLogger
+License: GPLv3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
+*/
+```
