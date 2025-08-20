@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace SmartDesk\Debug\Handlers;
+namespace SmartDesk\Utils\Handlers;
 
 /**
- * Writes to PHP's error_log() (useful on hosts piping this to syslog).
+ * Sends a single line to PHP error_log().
  */
-final class ErrorLogHandler {
-
+final class ErrorLogHandler
+{
 	/** @return callable(string,string,array):void */
 	public function handler(): callable
 	{
@@ -15,5 +15,4 @@ final class ErrorLogHandler {
 			error_log($line);
 		};
 	}
-	
 }

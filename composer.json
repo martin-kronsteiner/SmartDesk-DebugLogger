@@ -1,25 +1,22 @@
 {
-	"name": "smartdesk/debuglogger",
-	"description": "Lightweight PSR-4 debug logger with rotating files, WP integration helpers and timing utilities.",
+	"name": "smartdesk/debug-logger",
+	"description": "Human-friendly WordPress debug logger with hook status block and optional rotating file sink.",
 	"type": "library",
 	"license": "GPL-3.0-or-later",
 	"authors": [
-		{
-			"name": "SmartDesk",
-			"email": "support@kronsteiner.gmbh"
-		}
+		{ "name": "SmartDesk Development Team" }
 	],
 	"require": {
 		"php": ">=8.1"
 	},
 	"autoload": {
 		"psr-4": {
-			"SmartDesk\\Debug\\": "src/"
+			"SmartDesk\\Utils\\": "src/"
 		}
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"SmartDesk\\Debug\\Tests\\": "tests/"
+			"SmartDesk\\Utils\\Tests\\": "tests/"
 		}
 	},
 	"require-dev": {

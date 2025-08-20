@@ -1,36 +1,119 @@
 # SmartDesk DebugLogger
+[EN] Human-readable debug logger for WordPress development (PHP 8.1+).
+Generates structured multi-line entries with SmartDesk caller info, an optional hook status block (♻️/⏳), and a level prefix (emoji + label).
+Output goes to a sink: error_log() by default, optionally a rotating file via setWriter().
 
-Leichter, unabhängiger Logger für PHP 8.1+ mit file rotation, error_log, Timern und optionalen WP-Helpers.
+
+[DE] Menschenlesbarer Debug‑Logger für WordPress‑Entwicklung (PHP 8.1+).
+Erzeugt strukturierte Mehrzeilen‑Einträge mit SmartDesk‑Caller‑Info, optionalem Hook‑Status‑Block (♻️/⏳) und Level‑Präfix (Emoji + Label).
+Ausgabe geht an eine Senke (sink): standardmäßig error_log(), optional rotierende Datei via setWriter().
 
 ## Installation
-composer require smartdesk/debuglogger
+```bash
+composer require smartdesk/debug-logger
+```
 
-## Quickstart
+## How to use
+### Setup Rotating file sink with Request marker
 ```php
-use SmartDesk\Debug\DebugLogger;
-use SmartDesk\Debug\Support\LogLevel;
+use SmartDesk\Utils\DebugLogger;
 
-$logger = (new DebugLogger('smartdesk', LogLevel::DEBUG))
-	->withFile(WP_CONTENT_DIR . '/uploads/sd-logs', 'smartdesk.log')
-	->withErrorLog();
+/**
+ * This action hook sets up the debug logger only when WP_DEBUG is enabled.
+ */
+add_action('plugins_loaded', function () {
+	// Return early if WP_DEBUG is not defined or false
+	if (!defined('WP_DEBUG') || WP_DEBUG !== true) return;
 
-$logger->info('plugin booted', ['version' => '1.0.0']);
+	// Setup log file location
+	$dir = WP_CONTENT_DIR . '/uploads/smartdesk-logs';
+	DebugLogger::setWriter(DebugLogger::makeRotatingWriter($dir, 'dev.log', 2_000_000, 4));
+
+	// Optional: request marker for header
+	if (!defined('SMARTDESK_REQ')) {
+		define(
+			'SMARTDESK_REQ',
+			'Timestamp: ' . ($_SERVER['REQUEST_TIME_FLOAT'] ?? microtime(true))
+			. ' / Request: ' . substr(md5($_SERVER['REQUEST_URI'] ?? ''), 0, 6)
+		);
+	}
+});
+```
+
+### Log
+```php
+use SmartDesk\Utils\DebugLogger;
+
+// 🐞 Debug Flag
+$debug = 1 === 1;
+
+$debug && DebugLogger::log(
+	[
+		'🧪 foo' => 'bar',
+		'🧪 list' => ['a', 'b', 'c'],
+	],
+	'register',   // preset(s) or single hooks
+	'My Block'    // optional title
+);
+```
+
+### Log with Emoji‑Levels
+Available:
+🐞 DEBUG, ℹ️ INFO, 📋 NOTICE, ⚠️ WARNING, 🚨 ALERT, ⛔ EMERGENCY, ❌ ERROR, ☠️ CRITICAL
+
+```php
+use SmartDesk\Utils\DebugLogger;
+use SmartDesk\Utils\Support\LogLevel;
+
+$debug = 1 === 1;
+
+$debug && DebugLogger::log(
+	['🧪 foo' => 'bar', '🧪 list' => ['a','b','c']],
+	'register',
+	'My Block',
+	LogLevel::ERROR   // level prefix in header
+);
+```
+
+Or use Shortcut
+```php
+use SmartDesk\Utils\DebugLogger;
+
+DebugLogger::warning('something odd happened', 'frontend');
+DebugLogger::debug(['vars' => $_GET], ['request','enqueue'], 'Request vars');
+```
+
+### Log just Hook-State
+```php
+use SmartDesk\Utils\DebugLogger;
+
+DebugLogger::hook(['admin', 'enqueue'], 'Hooks');
+```
+
+### Timer
+```php
+use SmartDesk\Utils\DebugLogger;
+use SmartDesk\Utils\Support\LogLevel;
+
+// comments: English; tabs used for indent
+DebugLogger::timerStart('import');
+
+doImportStuff();
+
+DebugLogger::timerStop('import', 'Import job', LogLevel::NOTICE);
+```
+Output
+```
+📋 NOTICE SmartDesk\Importer\Runner::run - 12:34:56,12345
+'Timestamp: 1755609635.4039 / Request: abc123'
+C:\path\to\Importer\Runner.php:88
+
+	Timer finished
+	Timer 'import' finished in 2.3456s
+---------|---------|...
 
 ```
-## Timer
-```php
-$logger->timerStart('import');
-doImport();
-$logger->timerStop('import', 'import finished');
 
-```
-## WP Hook Wrapping
-```php
-add_action('init', $logger->wrapHook('init', function () {
-	// ...
-}));
-
-```
 ## Plugin integration
 ```php
 <?php
@@ -59,3 +142,15 @@ add_action('plugins_loaded', function () {
 		'php' => PHP_VERSION,
 	]);
 });
+```
+
+## Test
+```bash
+composer install
+composer test
+```
+
+## Notes
+Active only if WP_DEBUG === true.
+Timestamps in UTC.
+Single sink: default error_log(), or rotating file via setWriter().
