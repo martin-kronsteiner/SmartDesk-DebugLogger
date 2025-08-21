@@ -38,4 +38,5 @@ SmartDesk-DebugLogger/
 ├── phpstan.neon.dist
 ├── phpunit.xml
 ├── qa.sh
-└── README.md
+├── README.md
+└── WP-IMPLEMENTATION.md
