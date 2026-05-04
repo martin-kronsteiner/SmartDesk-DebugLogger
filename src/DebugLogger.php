@@ -469,31 +469,30 @@ final class DebugLogger
 	/**
 	 * Extract caller information from the debug backtrace for SmartDesk classes.
 	 *
-	 * Analyzes the debug backtrace to find the first calling frame that belongs to a SmartDesk
-	 * namespace class (excluding this DebugLogger class itself). Extracts the namespace,
+	 * Analyzes the debug backtrace to find the first calling frame that belongs to a supported
+	 * SmartDesk namespace class, excluding this DebugLogger class itself. Extracts the namespace,
 	 * function name with class context, and file location information. Uses reflection to
 	 * get accurate file and line information when possible, falling back to backtrace data.
 	 * Returns default values if no suitable SmartDesk caller is found in the trace.
 	 *
 	 * A three-element array containing:
-	 * 		[0]	The namespace portion of the calling class (e.g., 'SmartDesk\Utils'),
-	 * 			defaults to '[global scope]' if no SmartDesk caller found
+	 * 		[0]	The namespace portion of the calling class (e.g., 'SmartDesk\Utils' or 'SmartDeskCore'),
+	 * 			defaults to '[global scope]' if no supported SmartDesk caller found
 	 * 		[1]	The function name with class context (e.g., 'MyClass::myMethod()'),
-	 * 			defaults to '[unknown function]' if no SmartDesk caller found
+	 * 			defaults to '[unknown function]' if no supported SmartDesk caller found
 	 * 		[2]	The file path and line number (e.g., '/path/file.php:123'),
-	 * 			defaults to '[unknown location]' if no SmartDesk caller found
+	 * 			defaults to '[unknown location]' if no supported SmartDesk caller found
 	 * @return array{0:string,1:string,2:string}
-	 *
 	 */
 	private static function callerInfo(): array
-    {
-
+	{
 		$trace		= debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 15);
-        $caller		= null;
-        $namespace	= '[global scope]';
-        $function	= '[unknown function]';
-        $location	= '[unknown location]';
-        foreach ($trace as $frame) {
+		$caller		= null;
+		$namespace	= '[global scope]';
+		$function	= '[unknown function]';
+		$location	= '[unknown location]';
+
+		foreach ($trace as $frame) {
 			$frameClass = $frame['class'] ?? null;
 			if (!is_string($frameClass) || $frameClass === __CLASS__) {
 				continue;
@@ -506,27 +505,30 @@ final class DebugLogger
 				}
 			}
 		}
+
 		if (!$caller) {
-            return [$namespace, $function, $location];
-        }
+			return [$namespace, $function, $location];
+		}
 
 		if (isset($caller['class'])) {
-            $fullClass = $caller['class'];
-            $parts = explode('\\', $fullClass);
-            $function = end($parts) . '::' . $caller['function'] . '()';
-            array_pop($parts);
-            $namespace = implode('\\', $parts) ?: $namespace;
-            try {
-                $reflector = new \ReflectionMethod($caller['class'], $caller['function']);
-                $location = $reflector->getFileName() . ':' . $reflector->getStartLine();
-            } catch (\ReflectionException $e) {
-                if (isset($caller['file'], $caller['line'])) {
-                    $location = $caller['file'] . ':' . $caller['line'];
-                }
-            }
-        }
+			$fullClass = $caller['class'];
+			$parts = explode('\\', $fullClass);
+			$function = end($parts) . '::' . $caller['function'] . '()';
+			array_pop($parts);
+			$namespace = implode('\\', $parts) ?: $namespace;
+
+			try {
+				$reflector = new \ReflectionMethod($caller['class'], $caller['function']);
+				$location = $reflector->getFileName() . ':' . $reflector->getStartLine();
+			} catch (\ReflectionException $e) {
+				if (isset($caller['file'], $caller['line'])) {
+					$location = $caller['file'] . ':' . $caller['line'];
+				}
+			}
+		}
+
 		return [$namespace, $function, $location];
-    }
+	}
 
 	/**
 	 * Normalize and expand hook names into a deduplicated array of individual hook names.
