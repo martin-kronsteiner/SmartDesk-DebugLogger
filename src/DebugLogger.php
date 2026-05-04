@@ -494,16 +494,18 @@ final class DebugLogger
         $function	= '[unknown function]';
         $location	= '[unknown location]';
         foreach ($trace as $frame) {
-            $frameClass = $frame['class'] ?? null;
-            if (
-                is_string($frameClass)
-                && str_starts_with($frameClass, 'SmartDesk\\')
-                && $frameClass !== __CLASS__
-            ) {
-                $caller = $frame;
-                break;
-            }
-        }
+			$frameClass = $frame['class'] ?? null;
+			if (!is_string($frameClass) || $frameClass === __CLASS__) {
+				continue;
+			}
+
+			foreach (['SmartDesk\\', 'SmartDeskCore\\'] as $prefix) {
+				if (str_starts_with($frameClass, $prefix)) {
+					$caller = $frame;
+					break 2;
+				}
+			}
+		}
 		if (!$caller) {
             return [$namespace, $function, $location];
         }
