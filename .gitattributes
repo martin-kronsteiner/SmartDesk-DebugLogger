@@ -7,7 +7,13 @@
 /composer.lock      export-ignore
 /.gitignore         export-ignore
 /.gitattributes     export-ignore
-/LICENSE            export-ignore
 /filesystem.txt     export-ignore
 /qa.sh              export-ignore
 /pre-commit         export-ignore
+/.vscode            export-ignore
+/.phpunit.result.cache export-ignore
+/phpcs.xml.dist     export-ignore
+/phpstan.neon.dist  export-ignore
+/var                export-ignore
+/vendor             export-ignore
+/WP-IMPLEMENTATION.md export-ignore
